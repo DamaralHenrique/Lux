@@ -5,21 +5,60 @@ using UnityEngine;
 public class MoveCharacter : MonoBehaviour
 {
     public float speed = .015f;
+    private bool isMoving;
+    // private Vector2 input;
 
-    // Start is called before the first frame update
-    // void Start()
-    // {
-        
-    // }
+    private Animator animator;
+
+    void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     // Update is called once per frame
     void Update()
     {
-        float xDirection = Input.GetAxis("Horizontal");
-        float zDirection = Input.GetAxis("Vertical");
+        if (!isMoving)
+        {
+            float xDirection = Input.GetAxisRaw("Horizontal");
+            float zDirection = Input.GetAxisRaw("Vertical");
+            
+            // Remove diagonal movement
+            if (xDirection != 0.0f) zDirection = 0.0f;
 
-        Vector3 moveDirection = new Vector3(xDirection, 0.0f, zDirection);
+            if (xDirection != 0.0f | zDirection != 0.0f)
+            {
+                animator.SetFloat("moveX", xDirection);
+                animator.SetFloat("moveY", zDirection);
 
-        transform.position += moveDirection * speed;
+                var targetPos = transform.position;
+                targetPos.x += xDirection;
+                targetPos.z += zDirection;
+
+                StartCoroutine(Move(targetPos));
+
+                // Vector3 moveDirection = new Vector3(xDirection, 0.0f, zDirection);
+
+                // transform.position += moveDirection * speed;
+            }
+        }
+
+        animator.SetBool("isMoving", isMoving);
+    }
+
+    IEnumerator Move(Vector3 targetPos)
+    {
+        isMoving = true;
+
+        while ((targetPos - transform.position).sqrMagnitude > Mathf.Epsilon)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, targetPos, speed);
+            // transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
+
+            yield return null;
+        }
+        transform.position = targetPos;
+
+        isMoving = false;
     }
 }
