@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveCharacter : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
-    public float speed = .015f;
+    public float speed = .01f;
+    public LayerMask solidObjectLayer;
+    public LayerMask interactableLayer;
+
     private bool isMoving;
     // private Vector2 input;
 
@@ -35,7 +38,10 @@ public class MoveCharacter : MonoBehaviour
                 targetPos.x += xDirection;
                 targetPos.z += zDirection;
 
-                StartCoroutine(Move(targetPos));
+                if (IsWalkable(targetPos))
+                {
+                    StartCoroutine(Move(targetPos));
+                }
 
                 // Vector3 moveDirection = new Vector3(xDirection, 0.0f, zDirection);
 
@@ -44,6 +50,12 @@ public class MoveCharacter : MonoBehaviour
         }
 
         animator.SetBool("isMoving", isMoving);
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            // Debug.Log("kEY PRessed: f");
+            Interact();
+        }
     }
 
     IEnumerator Move(Vector3 targetPos)
@@ -53,12 +65,40 @@ public class MoveCharacter : MonoBehaviour
         while ((targetPos - transform.position).sqrMagnitude > Mathf.Epsilon)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPos, speed);
-            // transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
+            // transform.position = Vector3.MoveTowards(transform.position, targetPos, Time.deltaTime);
 
             yield return null;
         }
         transform.position = targetPos;
 
         isMoving = false;
+    }
+
+    private bool IsWalkable(Vector3 targetPos)
+    {
+        Collider [] collisions = Physics.OverlapSphere(targetPos, 0.15f, interactableLayer | solidObjectLayer);
+        if (collisions.Length != 0)
+        {
+            foreach(Collider obj in collisions)
+            {
+                Debug.Log("Collision with object " + obj.gameObject.name);
+            }
+            return false;
+        }
+
+        return true;
+    }
+
+    void Interact()
+    {
+        var facingDir = new Vector3(animator.GetFloat("moveX"), animator.GetFloat("moveY"));
+        var interactPos = transform.position + facingDir;
+
+        // Debug.DrawLine(transform.position, interactPos, Color.green, 0.5f);
+        var collider = Physics.OverlapSphere(interactPos, 0.15f, interactableLayer);
+        if (collider.Length != 0)
+        {
+            collider[0].GetComponent<Interactable>()?.Interact();
+        }
     }
 }
