@@ -48,12 +48,12 @@ ExportedObj/
 *.VC.db
 
 # Unity3D generated meta files
-*.pidb.meta
-*.pdb.meta
-*.mdb.meta
+# *.pidb.meta
+# *.pdb.meta
+# *.mdb.meta
 
 # Blender generated files
-*.meta
+# *.meta
 *.blend1
 
 # Unity3D generated file on crash reports
