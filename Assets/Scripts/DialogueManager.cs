@@ -2,7 +2,7 @@ using System; // For Action
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-// using UnityEngine.UI;
+using UnityEngine.UI;
 using TMPro; // For TextMeshProUGUI
 
 public class DialogueManager : MonoBehaviour
@@ -10,6 +10,9 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] int lettersPerSecond = 45;
     [SerializeField] GameObject dialogueBox;
     [SerializeField] TextMeshProUGUI dialogueText;
+    [SerializeField] GameObject inputFieldAndButton;
+    [SerializeField] TMP_InputField inputFieldText;
+    [SerializeField] Button button;
 
     public event Action OnShowDialogue;
     public event Action OnCloseDialogue;
@@ -17,6 +20,7 @@ public class DialogueManager : MonoBehaviour
     Dialogue dialogue;
     int currentLine = 0;
     bool isTyping;
+    int showInputAtLine = 2;
 
     public static DialogueManager Instance { get; private set; }
 
@@ -28,6 +32,8 @@ public class DialogueManager : MonoBehaviour
     private void Start()
     {
         dialogueBox.SetActive(false);
+        inputFieldAndButton.SetActive(false);
+        button.onClick.AddListener(OnButtonClicked);
     }
 
     public void HandleUpdate()
@@ -37,12 +43,19 @@ public class DialogueManager : MonoBehaviour
             ++currentLine;
             if (currentLine < dialogue.Lines.Count)
             {
-                StartCoroutine(TypeDialogue(dialogue.Lines[currentLine]));
+                dialogueText.text = dialogue.Lines[currentLine];
+                // TODO: impedir usuário de avançar o diálogo antes de apertar o botão
+                StartCoroutine(TypeDialogue(dialogueText.text));
+                if (currentLine == showInputAtLine)
+                {
+                    inputFieldAndButton.SetActive(true);
+                }
             }
             else
             {
                 currentLine = 0;
                 dialogueBox.SetActive(false);
+                inputFieldAndButton.SetActive(false);
                 OnCloseDialogue?.Invoke();
             }
         }
@@ -69,5 +82,23 @@ public class DialogueManager : MonoBehaviour
             yield return new WaitForSeconds(1f / lettersPerSecond);
         }
         isTyping = false;
+    }
+
+    public void OnButtonClicked()
+    {
+        inputFieldAndButton.SetActive(false);
+        string userInput = inputFieldText.text;
+        Debug.Log("User input: " + userInput);
+
+        if (userInput == "123")
+        {
+            dialogueText.text = "Senha correta!";
+        }
+        else
+        {
+            dialogueText.text = "Senha incorreta. Verifique o puzzle e tente novamente.";
+        }
+
+        // StartCoroutine(TypeDialogue(dialogue.Lines[currentLine]));
     }
 }
