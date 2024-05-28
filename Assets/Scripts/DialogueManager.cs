@@ -13,6 +13,9 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] GameObject inputFieldAndButton;
     [SerializeField] TMP_InputField inputFieldText;
     [SerializeField] Button button;
+    [SerializeField] GameObject choicePanel;
+    [SerializeField] Image choiceImage;
+    [SerializeField] List<TextMeshProUGUI> choiceTexts;
 
     public event Action OnShowDialogue;
     public event Action OnCloseDialogue;
@@ -20,7 +23,9 @@ public class DialogueManager : MonoBehaviour
     Dialogue dialogue;
     int currentLine = 0;
     bool isTyping;
-    int showInputAtLine = 2;
+    int showInputAtLine = 5;
+    int showChoiceAtLine = 2;
+    int selectedChoiceIndex = 0;
 
     public static DialogueManager Instance { get; private set; }
 
@@ -33,12 +38,13 @@ public class DialogueManager : MonoBehaviour
     {
         dialogueBox.SetActive(false);
         inputFieldAndButton.SetActive(false);
+        choicePanel.SetActive(false);
         button.onClick.AddListener(OnButtonClicked);
     }
 
     public void HandleUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.F) && !isTyping)
+        if (Input.GetKeyDown(KeyCode.F) && !isTyping && !choicePanel.activeSelf)
         {
             ++currentLine;
             if (currentLine < dialogue.Lines.Count)
@@ -49,6 +55,14 @@ public class DialogueManager : MonoBehaviour
                 if (currentLine == showInputAtLine)
                 {
                     inputFieldAndButton.SetActive(true);
+                    choicePanel.SetActive(false);
+                }
+                if (currentLine == showChoiceAtLine)
+                {
+                    choicePanel.SetActive(true);
+                    inputFieldAndButton.SetActive(false);
+                    selectedChoiceIndex = 0; // Reset choice index
+                    UpdateChoiceHighlight();
                 }
             }
             else
@@ -56,8 +70,14 @@ public class DialogueManager : MonoBehaviour
                 currentLine = 0;
                 dialogueBox.SetActive(false);
                 inputFieldAndButton.SetActive(false);
+                choicePanel.SetActive(false);
                 OnCloseDialogue?.Invoke();
             }
+        }
+
+        if (choicePanel.activeSelf)
+        {
+            HandleChoiceNavigation();
         }
     }
 
@@ -100,5 +120,53 @@ public class DialogueManager : MonoBehaviour
         }
 
         // StartCoroutine(TypeDialogue(dialogue.Lines[currentLine]));
+    }
+
+    private void HandleChoiceNavigation()
+    {
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            selectedChoiceIndex = (selectedChoiceIndex - 1 + choiceTexts.Count) % choiceTexts.Count;
+            UpdateChoiceHighlight();
+        }
+        else if (Input.GetKeyDown(KeyCode.S))
+        {
+            selectedChoiceIndex = (selectedChoiceIndex + 1) % choiceTexts.Count;
+            UpdateChoiceHighlight();
+        }
+        else if (Input.GetKeyDown(KeyCode.Return))
+        {
+            OnChoiceSelected(selectedChoiceIndex);
+        }
+    }
+
+    private void UpdateChoiceHighlight()
+    {
+        for (int i = 0; i < choiceTexts.Count; i++)
+        {
+            if (i == selectedChoiceIndex)
+            {
+                choiceTexts[i].color = Color.gray;
+            }
+            else
+            {
+                choiceTexts[i].color = Color.white;
+            }
+        }
+    }
+
+    public void OnChoiceSelected(int choiceIndex)
+    {
+        if (choicePanel != null)
+        {
+            choicePanel.SetActive(false);
+        }
+        
+        string chosenText = choiceTexts[choiceIndex].text;
+        Debug.Log("Choice selected: " + chosenText);
+
+        dialogueText.text = "You chose: " + chosenText;
+
+        dialogueBox.SetActive(true);
     }
 }
