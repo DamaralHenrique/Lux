@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask interactableLayer;
 
     private bool isMoving;
-    // private Vector2 input;
+    private Vector2 facingDirection;
 
     private Animator animator;
 
@@ -28,10 +28,13 @@ public class PlayerController : MonoBehaviour
             // Remove diagonal movement
             if (xDirection != 0.0f) zDirection = 0.0f;
 
-            if (xDirection != 0.0f | zDirection != 0.0f)
+            if (xDirection != 0.0f || zDirection != 0.0f)
             {
                 animator.SetFloat("moveX", xDirection);
                 animator.SetFloat("moveY", zDirection);
+
+                // Update facing direction
+                facingDirection = new Vector2(xDirection, zDirection).normalized;
 
                 var targetPos = transform.position;
                 targetPos.x += xDirection;
@@ -41,10 +44,6 @@ public class PlayerController : MonoBehaviour
                 {
                     StartCoroutine(Move(targetPos));
                 }
-
-                // Vector3 moveDirection = new Vector3(xDirection, 0.0f, zDirection);
-
-                // transform.position += moveDirection * speed;
             }
         }
 
@@ -52,7 +51,6 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F))
         {
-            // Debug.Log("kEY PRessed: f");
             Interact();
         }
     }
@@ -64,8 +62,6 @@ public class PlayerController : MonoBehaviour
         while ((targetPos - transform.position).sqrMagnitude > Mathf.Epsilon)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPos, speed);
-            // transform.position = Vector3.MoveTowards(transform.position, targetPos, Time.deltaTime);
-
             yield return null;
         }
         transform.position = targetPos;
@@ -75,10 +71,10 @@ public class PlayerController : MonoBehaviour
 
     private bool IsWalkable(Vector3 targetPos)
     {
-        Collider [] collisions = Physics.OverlapSphere(targetPos, 0.15f, interactableLayer | solidObjectLayer);
+        Collider[] collisions = Physics.OverlapSphere(targetPos, 0.15f, interactableLayer | solidObjectLayer);
         if (collisions.Length != 0)
         {
-            foreach(Collider obj in collisions)
+            foreach (Collider obj in collisions)
             {
                 Debug.Log("Collision with object " + obj.gameObject.name);
             }
@@ -90,11 +86,10 @@ public class PlayerController : MonoBehaviour
 
     void Interact()
     {
-        var facingDir = new Vector3(animator.GetFloat("moveX"), animator.GetFloat("moveY"));
-        var interactPos = transform.position + facingDir;
+        var interactPos = transform.position + new Vector3(facingDirection.x, 0, facingDirection.y);
 
-        // Debug.DrawLine(transform.position, interactPos, Color.green, 0.5f);
-        var collider = Physics.OverlapSphere(interactPos, 0.15f, interactableLayer);
+        Debug.DrawLine(transform.position, interactPos, Color.green, 0.5f);
+        var collider = Physics.OverlapSphere(interactPos, 0.3f, interactableLayer);
         if (collider.Length != 0)
         {
             collider[0].GetComponent<Interactable>()?.Interact();
