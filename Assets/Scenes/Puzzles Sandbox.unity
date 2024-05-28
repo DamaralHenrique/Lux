@@ -275,6 +275,8 @@ MonoBehaviour:
     - "[Di\xE1logo provis\xF3rio]"
     - 'Diga a senha:'
     - (Insira a senha obtida no puzzle)
+    - Frase 3
+    - Frase final
 --- !u!1 &318705646 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4508a51e443dffc4aa72a638caceaa84, type: 3}
@@ -2236,7 +2238,6 @@ GameObject:
   - component: {fileID: 1650017722}
   - component: {fileID: 1650017721}
   - component: {fileID: 1650017720}
-  - component: {fileID: 1650017723}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -2301,20 +2302,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1650017723
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1650017719}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f08ea34cc76d257469004a39f2fdeee7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  menu: {fileID: 1904364238}
-  alternativesText: []
 --- !u!1 &1825105262
 GameObject:
   m_ObjectHideFlags: 0
@@ -2546,8 +2533,9 @@ GameObject:
   - component: {fileID: 1904364241}
   - component: {fileID: 1904364240}
   - component: {fileID: 1904364239}
+  - component: {fileID: 1904364242}
   m_Layer: 5
-  m_Name: Menu
+  m_Name: ChoicePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2618,6 +2606,28 @@ RectTransform:
   m_AnchoredPosition: {x: -80, y: 2}
   m_SizeDelta: {x: 100, y: -223.3175}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1904364242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904364238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2fc6c0086c743947ac246199e7eee44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  choiceTexts:
+  - {fileID: 448541445}
+  - {fileID: 1558574559}
+  - {fileID: 1189078576}
+  - {fileID: 2101350503}
+  - {fileID: 478892690}
+  - {fileID: 2134684549}
+  - {fileID: 1380789568}
+  - {fileID: 1429640081}
+  selectedChoiceIndex: 0
 --- !u!1 &1961210910
 GameObject:
   m_ObjectHideFlags: 0
@@ -2968,6 +2978,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2062811073}
+  - component: {fileID: 2062811074}
   m_Layer: 5
   m_Name: InputAndButton
   m_TagString: Untagged
@@ -2996,6 +3007,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2062811074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2062811072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3edb2f493fbc5914cacd311685c16c29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputFieldText: {fileID: 369977956}
+  button: {fileID: 885057893}
 --- !u!1 &2101350501
 GameObject:
   m_ObjectHideFlags: 0
