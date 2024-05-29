@@ -53,8 +53,7 @@ ExportedObj/
 # *.mdb.meta
 
 # Blender generated files
-# *.meta
-*.blend1
+*.blend1*
 
 # Unity3D generated file on crash reports
 sysinfo.txt
