@@ -23,8 +23,8 @@ public class DialogueManager : MonoBehaviour
     Dialogue dialogue;
     int currentLine = 0;
     bool isTyping;
-    int showInputAtLine = 5;
-    int showChoiceAtLine = 2;
+    int showInputAtLine = 2;
+    int showChoiceAtLine = 5;
     int selectedChoiceIndex = 0;
 
     public static DialogueManager Instance { get; private set; }
