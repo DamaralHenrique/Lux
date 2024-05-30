@@ -233,6 +233,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7918335002988649766, guid: fe23f51ea7ebe7849ba7b6c8360e2553, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ea2f2e30c7b7c9b4db1333172d470cc2, type: 2}
     - target: {fileID: 919132149155446097, guid: fe23f51ea7ebe7849ba7b6c8360e2553, type: 3}
       propertyPath: m_Name
       value: RiddleTemple (8)
@@ -848,6 +852,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7918335002988649766, guid: fe23f51ea7ebe7849ba7b6c8360e2553, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 792abbbbf5425324e8a2288289a43705, type: 2}
     - target: {fileID: 919132149155446097, guid: fe23f51ea7ebe7849ba7b6c8360e2553, type: 3}
       propertyPath: m_Name
       value: RiddleTemple (7)
@@ -5364,6 +5372,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7918335002988649766, guid: fe23f51ea7ebe7849ba7b6c8360e2553, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7918335002988649766, guid: fe23f51ea7ebe7849ba7b6c8360e2553, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fc4ffba7da2429d4d8a60d0b12adf8c0, type: 2}
+    - target: {fileID: -7918335002988649766, guid: fe23f51ea7ebe7849ba7b6c8360e2553, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: -7442639060094753039, guid: fe23f51ea7ebe7849ba7b6c8360e2553, type: 3}
     - target: {fileID: 919132149155446097, guid: fe23f51ea7ebe7849ba7b6c8360e2553, type: 3}
       propertyPath: m_Name
       value: RiddleTemple (1)
@@ -5619,6 +5639,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7918335002988649766, guid: fe23f51ea7ebe7849ba7b6c8360e2553, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8b1bcce8ee135bf4c98cbab361ed351e, type: 2}
     - target: {fileID: 919132149155446097, guid: fe23f51ea7ebe7849ba7b6c8360e2553, type: 3}
       propertyPath: m_Name
       value: RiddleTemple (4)
@@ -5681,6 +5705,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7918335002988649766, guid: fe23f51ea7ebe7849ba7b6c8360e2553, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e2785fdf1b7ecd04797f3e04acee4211, type: 2}
     - target: {fileID: 919132149155446097, guid: fe23f51ea7ebe7849ba7b6c8360e2553, type: 3}
       propertyPath: m_Name
       value: RiddleTemple (2)
@@ -5743,6 +5771,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7918335002988649766, guid: fe23f51ea7ebe7849ba7b6c8360e2553, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: df6bf09c18870b44c8ad04082bdf5b22, type: 2}
     - target: {fileID: 919132149155446097, guid: fe23f51ea7ebe7849ba7b6c8360e2553, type: 3}
       propertyPath: m_Name
       value: RiddleTemple (6)
@@ -6484,6 +6516,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7918335002988649766, guid: fe23f51ea7ebe7849ba7b6c8360e2553, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2559e46b1e2076041b7c7ba0ba649dd9, type: 2}
     - target: {fileID: 919132149155446097, guid: fe23f51ea7ebe7849ba7b6c8360e2553, type: 3}
       propertyPath: m_Name
       value: RiddleTemple
@@ -7118,6 +7154,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7918335002988649766, guid: fe23f51ea7ebe7849ba7b6c8360e2553, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 882956c0fd6eab54fbb142eba9200306, type: 2}
     - target: {fileID: 919132149155446097, guid: fe23f51ea7ebe7849ba7b6c8360e2553, type: 3}
       propertyPath: m_Name
       value: RiddleTemple (5)
@@ -7277,6 +7317,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7918335002988649766, guid: fe23f51ea7ebe7849ba7b6c8360e2553, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 747e75024c83d704794c0177774f7d36, type: 2}
     - target: {fileID: 919132149155446097, guid: fe23f51ea7ebe7849ba7b6c8360e2553, type: 3}
       propertyPath: m_Name
       value: RiddleTemple (3)
