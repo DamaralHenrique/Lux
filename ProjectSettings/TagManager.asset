@@ -11,8 +11,10 @@ TagManager:
   - 
   - Water
   - UI
+  - Camera
   - Interactable
   - SolidObject
+  - 
   - 
   - 
   - 
