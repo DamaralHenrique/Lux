@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 179529714}
   - component: {fileID: 179529716}
   - component: {fileID: 179529717}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: NPC BLUE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -205,7 +205,7 @@ Transform:
   m_GameObject: {fileID: 179529711}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.87, y: 1.08, z: -1.816}
+  m_LocalPosition: {x: -6.16, y: 1.08, z: -1.683}
   m_LocalScale: {x: 3.5, y: 3.5, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -654,7 +654,7 @@ GameObject:
   - component: {fileID: 463704930}
   - component: {fileID: 463704929}
   - component: {fileID: 463704928}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: NPC RED
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -934,7 +934,7 @@ GameObject:
   - component: {fileID: 722590460}
   - component: {fileID: 722590459}
   - component: {fileID: 722590458}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: NPC GREEN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -977,8 +977,8 @@ MonoBehaviour:
   dialogue:
     lines:
     - "[Di\xE1logo provis\xF3rio]"
-    - 'Diga a senha:'
-    - (Insira a senha obtida no puzzle)
+    - abcd
+    - ...
 --- !u!65 &722590460
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1088,7 +1088,7 @@ Transform:
   m_GameObject: {fileID: 722590457}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.41, y: 1.08, z: -1.816}
+  m_LocalPosition: {x: 5.41, y: 1.08, z: -1.683}
   m_LocalScale: {x: 3.5, y: 3.5, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2640,7 +2640,7 @@ MonoBehaviour:
   - {fileID: 1558574559}
   - {fileID: 1189078576}
   - {fileID: 2101350503}
-  - {fileID: 0}
+  - {fileID: 914360569}
   - {fileID: 2134684549}
   - {fileID: 1380789568}
   - {fileID: 1429640081}
@@ -2867,10 +2867,12 @@ MonoBehaviour:
   speed: 0.015
   solidObjectLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 256
   interactableLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 128
+  collisionRadius: 0.2
+  interactRadius: 0.2
 --- !u!95 &1884853470
 Animator:
   serializedVersion: 5
@@ -2963,9 +2965,9 @@ RectTransform:
   m_Children:
   - {fileID: 437277933}
   - {fileID: 1558574558}
-  - {fileID: 914360568}
   - {fileID: 1189078575}
   - {fileID: 2101350502}
+  - {fileID: 914360568}
   - {fileID: 2134684548}
   - {fileID: 1380789567}
   - {fileID: 1429640080}
@@ -3338,7 +3340,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2062811073}
-  - component: {fileID: 2062811074}
   m_Layer: 5
   m_Name: InputAndButton
   m_TagString: Untagged
@@ -3367,18 +3368,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2062811074
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2062811072}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3edb2f493fbc5914cacd311685c16c29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2101350501
 GameObject:
   m_ObjectHideFlags: 0

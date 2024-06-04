@@ -20,11 +20,12 @@ public class DialogueManager : MonoBehaviour
     public event Action OnShowDialogue;
     public event Action OnCloseDialogue;
 
+    public int showInputAtLine = 2;
+    public int showChoiceAtLine = 5;
+
     Dialogue dialogue;
     int currentLine = 0;
     bool isTyping;
-    int showInputAtLine = 2;
-    int showChoiceAtLine = 5;
     int selectedChoiceIndex = 0;
 
     public static DialogueManager Instance { get; private set; }

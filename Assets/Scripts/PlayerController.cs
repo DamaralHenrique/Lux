@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     public float speed = .01f;
     public LayerMask solidObjectLayer;
     public LayerMask interactableLayer;
+    public float collisionRadius = 0.2f;
+    public float interactRadius = 0.2f;
 
     private bool isMoving;
     private Vector2 facingDirection;
@@ -71,7 +73,7 @@ public class PlayerController : MonoBehaviour
 
     private bool IsWalkable(Vector3 targetPos)
     {
-        Collider[] collisions = Physics.OverlapSphere(targetPos, 0.15f, interactableLayer | solidObjectLayer);
+        Collider[] collisions = Physics.OverlapSphere(targetPos, collisionRadius, interactableLayer | solidObjectLayer);
         if (collisions.Length != 0)
         {
             foreach (Collider obj in collisions)
@@ -89,7 +91,7 @@ public class PlayerController : MonoBehaviour
         var interactPos = transform.position + new Vector3(facingDirection.x, 0, facingDirection.y);
 
         Debug.DrawLine(transform.position, interactPos, Color.green, 0.5f);
-        var collider = Physics.OverlapSphere(interactPos, 0.3f, interactableLayer);
+        var collider = Physics.OverlapSphere(interactPos, interactRadius, interactableLayer);
         if (collider.Length != 0)
         {
             collider[0].GetComponent<Interactable>()?.Interact();
