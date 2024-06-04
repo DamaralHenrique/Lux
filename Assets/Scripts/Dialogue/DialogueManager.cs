@@ -128,11 +128,22 @@ public class DialogueManager : MonoBehaviour
         {
             typingCoroutine = StartCoroutine(TypeDialogue("Senha correta!"));
             OnPasswordCorrect?.Invoke();
+
+            NPCController currentNPC = GetCurrentNPC();
+            if (currentNPC != null)
+            {
+                currentNPC.ChangeToPuzzleCompleteDialogue();
+            }
         }
         else
         {
             typingCoroutine = StartCoroutine(TypeDialogue("Senha incorreta. Verifique o puzzle e tente novamente."));
         }
+    }
+
+        private NPCController GetCurrentNPC()
+    {
+        return FindObjectOfType<NPCController>(); 
     }
 
     private void HandleChoiceNavigation()

@@ -2234,12 +2234,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4c95d609f73f904aa6cdc52ddd3979f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue:
+  initialDialogue:
     lines:
     - "[Di\xE1logo provis\xF3rio]"
     - "Para provar que voc\xEA \xE9 digno de entrar no templo dos vermelhos, diga-me
       a senha secreta"
-    - '[Insira a senha obtida no puzzle das placas]'
+    - '[Insira a senha obtida no puzzle das senhas]'
+  puzzleCompleteDialogue:
+    lines:
+    - "[Di\xE1logo provis\xF3rio] Agora voc\xEA pode entrar no templo."
+  moveSpeed: 1
 --- !u!1 &228373236 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e0008ee9a3ba9d6458bc8bdbad579be5, type: 3}
@@ -6461,9 +6465,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4c95d609f73f904aa6cdc52ddd3979f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue:
+  initialDialogue:
     lines:
-    - "[TODO: Fazer o di\xE1logo do NPC confuso com as placas]"
+    - "[TODO: Add di\xE1logo do NPC das placas]"
+  puzzleCompleteDialogue:
+    lines: []
+  moveSpeed: 1
 --- !u!212 &900222014
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12733,6 +12740,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 2000698396}
+  npcController: {fileID: 0}
 --- !u!1001 &1730590946
 PrefabInstance:
   m_ObjectHideFlags: 0

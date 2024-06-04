@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class NPCController : MonoBehaviour, Interactable
 {
-    [SerializeField] Dialogue dialogue;
+    [SerializeField] Dialogue initialDialogue;
+    [SerializeField] Dialogue puzzleCompleteDialogue;
     [SerializeField] float moveSpeed = 1f;
 
+    private Dialogue currentDialogue;
     private bool isMoving;
+
+    private void Start()
+    {
+        currentDialogue = initialDialogue;
+    }
 
     public void Interact()
     {
         GameController.Instance.SetCurrentNPC(this);
-        StartCoroutine(DialogueManager.Instance.ShowDialogue(dialogue));
+        StartCoroutine(DialogueManager.Instance.ShowDialogue(currentDialogue));
+    }
+
+    public void ChangeToPuzzleCompleteDialogue()
+    {
+        currentDialogue = puzzleCompleteDialogue;
     }
 
     public void MoveNPC(Vector3 displacement)
