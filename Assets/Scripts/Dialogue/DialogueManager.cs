@@ -141,7 +141,7 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-        private NPCController GetCurrentNPC()
+    private NPCController GetCurrentNPC()
     {
         return FindObjectOfType<NPCController>(); 
     }

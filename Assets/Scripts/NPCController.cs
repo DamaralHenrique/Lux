@@ -6,7 +6,7 @@ public class NPCController : MonoBehaviour, Interactable
 {
     [SerializeField] Dialogue initialDialogue;
     [SerializeField] Dialogue puzzleCompleteDialogue;
-    [SerializeField] float moveSpeed = 1f;
+    [SerializeField] float moveSpeed = 0.05f;
 
     private Dialogue currentDialogue;
     private bool isMoving;
