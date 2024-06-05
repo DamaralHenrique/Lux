@@ -9,7 +9,6 @@ public class NPCController : MonoBehaviour, Interactable
     [SerializeField] float moveSpeed = 0.05f;
 
     private Dialogue currentDialogue;
-    private bool isMoving;
 
     private void Start()
     {
@@ -35,15 +34,11 @@ public class NPCController : MonoBehaviour, Interactable
 
     private IEnumerator Move(Vector3 targetPos)
     {
-        isMoving = true;
-
         while ((targetPos - transform.position).sqrMagnitude > Mathf.Epsilon)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
             yield return null;
         }
         transform.position = targetPos;
-
-        isMoving = false;
     }
 }

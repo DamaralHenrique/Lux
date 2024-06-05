@@ -117,7 +117,7 @@ public class DialogueManager : MonoBehaviour
     {
         inputFieldAndButton.SetActive(false);
         string userInput = inputFieldText.text;
-        Debug.Log("User input: " + userInput);
+        // Debug.Log("User input: " + userInput);
 
         if (typingCoroutine != null)
         {
