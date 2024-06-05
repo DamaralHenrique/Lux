@@ -7,6 +7,10 @@ public class PlayerController : MonoBehaviour
     public float speed = .01f;
     public LayerMask solidObjectLayer;
     public LayerMask interactableLayer;
+    public LayerMask floorLayer;
+
+    public float collisionRadius = 0.2f;
+    public float interactRadius = 0.2f;
 
     private bool isMoving;
     private Vector2 facingDirection;
@@ -24,7 +28,7 @@ public class PlayerController : MonoBehaviour
         {
             float xDirection = Input.GetAxisRaw("Horizontal");
             float zDirection = Input.GetAxisRaw("Vertical");
-            
+
             // Remove diagonal movement
             if (xDirection != 0.0f) zDirection = 0.0f;
 
@@ -42,6 +46,8 @@ public class PlayerController : MonoBehaviour
 
                 if (IsWalkable(targetPos))
                 {
+                    float targetHeight = GetTargetHeight(targetPos);
+                    targetPos.y = targetHeight;
                     StartCoroutine(Move(targetPos));
                 }
             }
@@ -71,17 +77,42 @@ public class PlayerController : MonoBehaviour
 
     private bool IsWalkable(Vector3 targetPos)
     {
-        Collider[] collisions = Physics.OverlapSphere(targetPos, 0.15f, interactableLayer | solidObjectLayer);
+        Collider[] collisions = Physics.OverlapSphere(targetPos, collisionRadius, interactableLayer | solidObjectLayer);
         if (collisions.Length != 0)
         {
-            foreach (Collider obj in collisions)
-            {
-                Debug.Log("Collision with object " + obj.gameObject.name);
-            }
+            // foreach (Collider obj in collisions)
+            // {
+            //     Debug.Log("Collision with object " + obj.gameObject.name);
+            // }
             return false;
         }
 
         return true;
+    }
+
+    private float GetTargetHeight(Vector3 targetPos)
+    {
+        RaycastHit hitUp;
+        RaycastHit hitDown;
+
+        // Raycast upwards to detect climbable objects
+        float characterHeight = 0.77f;
+        if (Physics.Raycast(targetPos - Vector3.up * characterHeight, Vector3.up, out hitUp, 1.0f, floorLayer))
+        {
+            Debug.Log("Climbable object");
+            Debug.Log("Hit point: " + hitUp.point.y);
+            float ascPosY = hitUp.point.y + characterHeight + 0.35f;
+            Debug.Log("New pos-y: " + ascPosY);
+
+            return ascPosY;
+        }
+        
+        // Raycast downwards to detect descendable areas
+        Physics.Raycast(targetPos, Vector3.down, out hitDown, 100, floorLayer);
+        float floorBoxColisionZ = 0.02f;
+        float posY = hitUp.point.y + characterHeight + floorBoxColisionZ;
+
+        return posY;
     }
 
     void Interact()
@@ -89,7 +120,7 @@ public class PlayerController : MonoBehaviour
         var interactPos = transform.position + new Vector3(facingDirection.x, 0, facingDirection.y);
 
         Debug.DrawLine(transform.position, interactPos, Color.green, 0.5f);
-        var collider = Physics.OverlapSphere(interactPos, 0.3f, interactableLayer);
+        var collider = Physics.OverlapSphere(interactPos, interactRadius, interactableLayer);
         if (collider.Length != 0)
         {
             collider[0].GetComponent<Interactable>()?.Interact();

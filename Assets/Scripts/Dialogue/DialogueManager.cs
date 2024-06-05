@@ -19,13 +19,16 @@ public class DialogueManager : MonoBehaviour
 
     public event Action OnShowDialogue;
     public event Action OnCloseDialogue;
+    public event Action OnPasswordCorrect;
+
+    public int showInputAtLine = 2;
+    public int showChoiceAtLine = 5;
 
     Dialogue dialogue;
     int currentLine = 0;
     bool isTyping;
-    int showInputAtLine = 2;
-    int showChoiceAtLine = 5;
     int selectedChoiceIndex = 0;
+    Coroutine typingCoroutine;
 
     public static DialogueManager Instance { get; private set; }
 
@@ -49,9 +52,11 @@ public class DialogueManager : MonoBehaviour
             ++currentLine;
             if (currentLine < dialogue.Lines.Count)
             {
-                dialogueText.text = dialogue.Lines[currentLine];
-                // TODO: impedir usuário de avançar o diálogo antes de apertar o botão
-                StartCoroutine(TypeDialogue(dialogueText.text));
+                if (typingCoroutine != null)
+                {
+                    StopCoroutine(typingCoroutine);
+                }
+                typingCoroutine = StartCoroutine(TypeDialogue(dialogue.Lines[currentLine]));
                 if (currentLine == showInputAtLine)
                 {
                     inputFieldAndButton.SetActive(true);
@@ -89,7 +94,11 @@ public class DialogueManager : MonoBehaviour
 
         this.dialogue = dialogue;
         dialogueBox.SetActive(true);
-        StartCoroutine(TypeDialogue(dialogue.Lines[0]));
+        if (typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+        }
+        typingCoroutine = StartCoroutine(TypeDialogue(dialogue.Lines[0]));
     }
 
     public IEnumerator TypeDialogue(string line)
@@ -108,18 +117,33 @@ public class DialogueManager : MonoBehaviour
     {
         inputFieldAndButton.SetActive(false);
         string userInput = inputFieldText.text;
-        Debug.Log("User input: " + userInput);
+        // Debug.Log("User input: " + userInput);
+
+        if (typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+        }
 
         if (userInput == "123")
         {
-            dialogueText.text = "Senha correta!";
+            typingCoroutine = StartCoroutine(TypeDialogue("Senha correta!"));
+            OnPasswordCorrect?.Invoke();
+
+            NPCController currentNPC = GetCurrentNPC();
+            if (currentNPC != null)
+            {
+                currentNPC.ChangeToPuzzleCompleteDialogue();
+            }
         }
         else
         {
-            dialogueText.text = "Senha incorreta. Verifique o puzzle e tente novamente.";
+            typingCoroutine = StartCoroutine(TypeDialogue("Senha incorreta. Verifique o puzzle e tente novamente."));
         }
+    }
 
-        // StartCoroutine(TypeDialogue(dialogue.Lines[currentLine]));
+    private NPCController GetCurrentNPC()
+    {
+        return FindObjectOfType<NPCController>(); 
     }
 
     private void HandleChoiceNavigation()
@@ -165,7 +189,11 @@ public class DialogueManager : MonoBehaviour
         string chosenText = choiceTexts[choiceIndex].text;
         Debug.Log("Choice selected: " + chosenText);
 
-        dialogueText.text = "You chose: " + chosenText;
+        if (typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+        }
+        typingCoroutine = StartCoroutine(TypeDialogue("You chose: " + chosenText));
 
         dialogueBox.SetActive(true);
     }
