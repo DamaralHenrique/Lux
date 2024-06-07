@@ -15,7 +15,7 @@ TagManager:
   - Interactable
   - SolidObject
   - Floor
-  - 
+  - SceneTransition
   - 
   - 
   - 
