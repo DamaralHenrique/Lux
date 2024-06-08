@@ -15,9 +15,9 @@ TagManager:
   - Interactable
   - SolidObject
   - Floor
-  - 
-  - 
-  - 
+  - SceneTransition
+  - DisappearOnPuzzleComplete
+  - Totem
   - 
   - 
   - 

@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/RedTemple.unity
     guid: 162c5ecd45842da429d8463d77c95376
+  - enabled: 1
+    path: Assets/Scenes/BlueTemple.unity
+    guid: e59ce0d177d2bfb42b9207d668154ea2
   m_configObjects: {}

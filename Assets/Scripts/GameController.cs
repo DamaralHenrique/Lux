@@ -47,6 +47,21 @@ public class GameController : MonoBehaviour
                 currentNPC.MoveNPC(displacement);
             }
         };
+        DialogueManager.Instance.OnCubePuzzleComplete += () =>
+        {
+            Debug.Log("DisappearOnPuzzleComplete");
+            int layer = LayerMask.NameToLayer("DisappearOnPuzzleComplete");
+            GameObject[] allObjects = GameObject.FindObjectsOfType<GameObject>();
+
+            foreach (GameObject obj in allObjects)
+            {
+                if (obj.layer == layer)
+                {
+                    Debug.Log(obj.name);
+                    obj.SetActive(false);
+                }
+            }
+        };
     }
 
     public void SetCurrentNPC(NPCController npc)

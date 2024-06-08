@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     public LayerMask solidObjectLayer;
     public LayerMask interactableLayer;
     public LayerMask floorLayer;
+    public LayerMask disappearOnPuzzleCompleteLayer;
+    public LayerMask totemLayer;
 
     public float collisionRadius = 0.2f;
     public float interactRadius = 0.2f;
@@ -16,10 +18,12 @@ public class PlayerController : MonoBehaviour
     private Vector2 facingDirection;
 
     private Animator animator;
+    private InventoryManager inventoryManager;
 
     void Awake()
     {
         animator = GetComponent<Animator>();
+        inventoryManager = FindObjectOfType<InventoryManager>();
     }
 
     public void HandleUpdate()
@@ -37,7 +41,6 @@ public class PlayerController : MonoBehaviour
                 animator.SetFloat("moveX", xDirection);
                 animator.SetFloat("moveY", zDirection);
 
-                // Update facing direction
                 facingDirection = new Vector2(xDirection, zDirection).normalized;
 
                 var targetPos = transform.position;
@@ -59,6 +62,11 @@ public class PlayerController : MonoBehaviour
         {
             Interact();
         }
+
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            inventoryManager.PrintInventory();
+        }
     }
 
     IEnumerator Move(Vector3 targetPos)
@@ -77,7 +85,9 @@ public class PlayerController : MonoBehaviour
 
     private bool IsWalkable(Vector3 targetPos)
     {
-        Collider[] collisions = Physics.OverlapSphere(targetPos, collisionRadius, interactableLayer | solidObjectLayer);
+        Collider[] collisions = Physics.OverlapSphere(
+            targetPos, collisionRadius, interactableLayer | solidObjectLayer | disappearOnPuzzleCompleteLayer
+        );
         if (collisions.Length != 0)
         {
             // foreach (Collider obj in collisions)
@@ -119,11 +129,18 @@ public class PlayerController : MonoBehaviour
     {
         var interactPos = transform.position + new Vector3(facingDirection.x, 0, facingDirection.y);
 
-        Debug.DrawLine(transform.position, interactPos, Color.green, 0.5f);
-        var collider = Physics.OverlapSphere(interactPos, interactRadius, interactableLayer);
-        if (collider.Length != 0)
+        var NPCCollider = Physics.OverlapSphere(interactPos, interactRadius, interactableLayer);
+        if (NPCCollider.Length != 0)
         {
-            collider[0].GetComponent<Interactable>()?.Interact();
+            NPCCollider[0].GetComponent<Interactable>()?.Interact();
+        }
+
+        var TotemCollider = Physics.OverlapSphere(interactPos, interactRadius, totemLayer);
+        if (TotemCollider.Length != 0)
+        {
+            string totemName = TotemCollider[0].gameObject.name;
+            inventoryManager.AddItem(totemName);
+            TotemCollider[0].gameObject.SetActive(false);
         }
     }
 }
