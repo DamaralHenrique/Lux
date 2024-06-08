@@ -873,7 +873,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.3898, y: -148.7113}
+  m_AnchoredPosition: {x: -0.3898, y: -129.7113}
   m_SizeDelta: {x: 447.7795, y: 84.9769}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &355227453
@@ -1298,6 +1298,7 @@ GameObject:
   - component: {fileID: 390297896}
   - component: {fileID: 390297895}
   - component: {fileID: 390297894}
+  - component: {fileID: 390297897}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -1365,6 +1366,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &390297897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 390297893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27b46ff53cf18544ab202f781896de16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory:
+  - DummyItem
 --- !u!1 &484240462
 GameObject:
   m_ObjectHideFlags: 0
@@ -2980,6 +2995,10 @@ PrefabInstance:
       value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7923304172012932269, guid: a1afb636d420b4f4cbf160724fb2fa62, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7923304172012932269, guid: a1afb636d420b4f4cbf160724fb2fa62, type: 3}
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
@@ -3030,6 +3049,9 @@ MonoBehaviour:
   floorLayer:
     serializedVersion: 2
     m_Bits: 512
+  totemLayer:
+    serializedVersion: 2
+    m_Bits: 4096
   collisionRadius: 0.2
   interactRadius: 0.2
 --- !u!65 &1070744967
@@ -4189,12 +4211,22 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 816a9e8829488c84fa347c9a13dc554c, type: 2}
     - target: {fileID: 919132149155446097, guid: b4060ae4edf538c4ebca27de53159da7, type: 3}
       propertyPath: m_Name
-      value: Totem
+      value: BlueTotem
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b4060ae4edf538c4ebca27de53159da7, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b4060ae4edf538c4ebca27de53159da7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2098834501}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b4060ae4edf538c4ebca27de53159da7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2098834500}
   m_SourcePrefab: {fileID: 100100000, guid: b4060ae4edf538c4ebca27de53159da7, type: 3}
 --- !u!4 &1498385902 stripped
 Transform:
@@ -4492,7 +4524,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 19}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1718878983
@@ -4980,6 +5012,61 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: Scenes/MainSquare
+--- !u!1 &2098834497 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b4060ae4edf538c4ebca27de53159da7, type: 3}
+  m_PrefabInstance: {fileID: 1498385901}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &2098834500
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098834497}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
+--- !u!136 &2098834501
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098834497}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Height: 1.4641023
+  m_Direction: 1
+  m_Center: {x: 0.28283235, y: 0.267949, z: -0.0000041341177}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
