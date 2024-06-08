@@ -16,7 +16,7 @@ TagManager:
   - SolidObject
   - Floor
   - SceneTransition
-  - 
+  - DisappearOnPuzzleComplete
   - 
   - 
   - 

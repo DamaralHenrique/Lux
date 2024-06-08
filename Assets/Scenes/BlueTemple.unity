@@ -2959,9 +2959,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2308518369958767624, guid: a1afb636d420b4f4cbf160724fb2fa62, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: -2308518369958767624, guid: a1afb636d420b4f4cbf160724fb2fa62, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -2308518369958767624, guid: a1afb636d420b4f4cbf160724fb2fa62, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a1afb636d420b4f4cbf160724fb2fa62, type: 3}
       propertyPath: m_Name
       value: BlueTemple
+      objectReference: {fileID: 0}
+    - target: {fileID: 7923304172012932269, guid: a1afb636d420b4f4cbf160724fb2fa62, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7923304172012932269, guid: a1afb636d420b4f4cbf160724fb2fa62, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3253,7 +3273,8 @@ MonoBehaviour:
     - "[Insira a cor do s\xE9timo cubo]"
     - '[Insira a cor do oitavo cubo]'
   puzzleCompleteDialogue:
-    lines: []
+    lines:
+    - "[Provis\xF3rio] Di\xE1logo ap\xF3s completar o puzzle"
   moveSpeed: 0.05
 --- !u!65 &1133889126
 BoxCollider:

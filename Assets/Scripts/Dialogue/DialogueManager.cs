@@ -20,12 +20,15 @@ public class DialogueManager : MonoBehaviour
     public event Action OnShowDialogue;
     public event Action OnCloseDialogue;
     public event Action OnPasswordCorrect;
+    public event Action OnCubePuzzleComplete;
 
     // Add manualmente na cena, em GameController -> DialogueManager
     public List<int> showInputAtLine = new List<int> {}; 
     public List<int> showChoiceAtLine = new List<int> {};
 
     List<int> cubePuzzleAnswers = new List<int> { 7, 2, 5, 4, 0, 1, 6, 3 };
+    // List<int> cubePuzzleAnswers = new List<int> { 0, 0, 0, 0, 0, 0, 0, 0 }; // For testing
+
     int currentCubePuzzleIndex = 0;
 
     Dialogue dialogue;
@@ -133,12 +136,7 @@ public class DialogueManager : MonoBehaviour
         {
             typingCoroutine = StartCoroutine(TypeDialogue("Senha correta!"));
             OnPasswordCorrect?.Invoke();
-
-            NPCController currentNPC = GetCurrentNPC();
-            if (currentNPC != null)
-            {
-                currentNPC.ChangeToPuzzleCompleteDialogue();
-            }
+            ChangeDialogue();
         }
         else
         {
@@ -149,6 +147,15 @@ public class DialogueManager : MonoBehaviour
     private NPCController GetCurrentNPC()
     {
         return FindObjectOfType<NPCController>(); 
+    }
+
+    private void ChangeDialogue()
+    {
+        NPCController currentNPC = GetCurrentNPC();
+        if (currentNPC != null)
+        {
+            currentNPC.ChangeToPuzzleCompleteDialogue();
+        }
     }
 
     private void HandleChoiceNavigation()
@@ -212,6 +219,15 @@ public class DialogueManager : MonoBehaviour
             typingCoroutine = StartCoroutine(TypeDialogue("Incorreto. Verifique novamente as cores."));
             currentLine = 100; // Vai pro fim do diálogo
         }
+
+        // Completou o puzzle
+        if (choiceIndex == answer && currentCubePuzzleIndex == cubePuzzleAnswers.Count - 1)
+        {
+            OnCubePuzzleComplete?.Invoke();
+            ChangeDialogue();
+        }
+
+
         currentCubePuzzleIndex++;
 
         dialogueBox.SetActive(true);
