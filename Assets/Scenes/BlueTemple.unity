@@ -3408,7 +3408,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 177786821057707394, guid: a1afb636d420b4f4cbf160724fb2fa62, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 388126035897074795, guid: a1afb636d420b4f4cbf160724fb2fa62, type: 3}
       propertyPath: m_Layer
@@ -3574,6 +3574,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 177786821057707394, guid: a1afb636d420b4f4cbf160724fb2fa62, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1571341785}
+    - targetCorrespondingSourceObject: {fileID: 177786821057707394, guid: a1afb636d420b4f4cbf160724fb2fa62, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1571341786}
     - targetCorrespondingSourceObject: {fileID: 5770991382743574776, guid: a1afb636d420b4f4cbf160724fb2fa62, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1748549979}
@@ -5064,6 +5067,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2, y: 2, z: 4}
   m_Center: {x: -0.00000047683716, y: -3.1763738e-22, z: -0.000000029802319}
+--- !u!114 &1571341786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571341781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89599e3fcfd2c9444abf05d6bac060ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectText:
+    lines:
+    - "[Tempor\xE1rio] Texto da inscri\xE7\xE3o: lorem ipsum lorem ipsum lorem ipsum"
 --- !u!1001 &1579240135
 PrefabInstance:
   m_ObjectHideFlags: 0
