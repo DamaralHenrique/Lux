@@ -21,8 +21,12 @@ public class DialogueManager : MonoBehaviour
     public event Action OnCloseDialogue;
     public event Action OnPasswordCorrect;
 
-    public int showInputAtLine = 2;
-    public int showChoiceAtLine = 5;
+    // Add manualmente na cena, em GameController -> DialogueManager
+    public List<int> showInputAtLine = new List<int> {}; 
+    public List<int> showChoiceAtLine = new List<int> {};
+
+    List<int> cubePuzzleAnswers = new List<int> { 7, 2, 5, 4, 0, 1, 6, 3 };
+    int currentCubePuzzleIndex = 0;
 
     Dialogue dialogue;
     int currentLine = 0;
@@ -57,22 +61,23 @@ public class DialogueManager : MonoBehaviour
                     StopCoroutine(typingCoroutine);
                 }
                 typingCoroutine = StartCoroutine(TypeDialogue(dialogue.Lines[currentLine]));
-                if (currentLine == showInputAtLine)
+                if (showInputAtLine.Contains(currentLine))
                 {
                     inputFieldAndButton.SetActive(true);
                     choicePanel.SetActive(false);
                 }
-                if (currentLine == showChoiceAtLine)
+                if (showChoiceAtLine.Contains(currentLine))
                 {
                     choicePanel.SetActive(true);
                     inputFieldAndButton.SetActive(false);
-                    selectedChoiceIndex = 0; // Reset choice index
+                    selectedChoiceIndex = 0;
                     UpdateChoiceHighlight();
                 }
             }
             else
             {
                 currentLine = 0;
+                currentCubePuzzleIndex = 0;
                 dialogueBox.SetActive(false);
                 inputFieldAndButton.SetActive(false);
                 choicePanel.SetActive(false);
@@ -187,13 +192,27 @@ public class DialogueManager : MonoBehaviour
         }
         
         string chosenText = choiceTexts[choiceIndex].text;
-        Debug.Log("Choice selected: " + chosenText);
+        int answer = cubePuzzleAnswers[currentCubePuzzleIndex];
+        // Debug.Log("Choice selected: " + chosenText);
+        // Debug.Log("Choice index: " + choiceIndex);
+        // Debug.Log("Correct answer: " + cubePuzzleAnswers[currentCubePuzzleIndex]);
 
         if (typingCoroutine != null)
         {
             StopCoroutine(typingCoroutine);
         }
-        typingCoroutine = StartCoroutine(TypeDialogue("You chose: " + chosenText));
+
+        // typingCoroutine = StartCoroutine(TypeDialogue("You chose: " + chosenText));
+        if (choiceIndex == answer)
+        {
+            typingCoroutine = StartCoroutine(TypeDialogue("Correto!"));
+        }
+        else
+        {
+            typingCoroutine = StartCoroutine(TypeDialogue("Incorreto. Verifique novamente as cores."));
+            currentLine = 100; // Vai pro fim do diálogo
+        }
+        currentCubePuzzleIndex++;
 
         dialogueBox.SetActive(true);
     }
