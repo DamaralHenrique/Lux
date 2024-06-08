@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask solidObjectLayer;
     public LayerMask interactableLayer;
     public LayerMask floorLayer;
+    public LayerMask disappearOnPuzzleCompleteLayer;
     public LayerMask totemLayer;
 
     public float collisionRadius = 0.2f;
@@ -84,7 +85,9 @@ public class PlayerController : MonoBehaviour
 
     private bool IsWalkable(Vector3 targetPos)
     {
-        Collider[] collisions = Physics.OverlapSphere(targetPos, collisionRadius, interactableLayer | solidObjectLayer);
+        Collider[] collisions = Physics.OverlapSphere(
+            targetPos, collisionRadius, interactableLayer | solidObjectLayer | disappearOnPuzzleCompleteLayer
+        );
         if (collisions.Length != 0)
         {
             // foreach (Collider obj in collisions)
