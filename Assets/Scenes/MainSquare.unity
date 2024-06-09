@@ -7383,7 +7383,7 @@ GameObject:
   - component: {fileID: 944128091}
   - component: {fileID: 944128092}
   m_Layer: 7
-  m_Name: Spot Light
+  m_Name: NPC Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13129,7 +13129,7 @@ GameObject:
   - component: {fileID: 1675480724}
   - component: {fileID: 1675480725}
   m_Layer: 7
-  m_Name: Point Light
+  m_Name: NPC Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
