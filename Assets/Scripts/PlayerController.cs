@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -141,6 +142,22 @@ public class PlayerController : MonoBehaviour
             string totemName = TotemCollider[0].gameObject.name;
             inventoryManager.AddItem(totemName);
             TotemCollider[0].gameObject.SetActive(false);
+
+            Scene scene = SceneManager.GetActiveScene();
+            if (scene.name == "RedTemple")
+            {
+                int layer = LayerMask.NameToLayer("DisappearOnPuzzleComplete");
+                GameObject[] allObjects = GameObject.FindObjectsOfType<GameObject>();
+
+                foreach (GameObject obj in allObjects)
+                {
+                    if (obj.layer == layer)
+                    {
+                        Debug.Log(obj.name);
+                        obj.SetActive(false);
+                    }
+                }
+            }
         }
     }
 }
