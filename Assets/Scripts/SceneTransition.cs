@@ -7,11 +7,12 @@ public class SceneTransition : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("OnTriggerEnter");
+        // Debug.Log("OnTriggerEnter");
         if (other.CompareTag("Player"))
         {
             Debug.Log("Trocando para a cena " + sceneToLoad + "...");
-            SceneManager.LoadSceneAsync(sceneToLoad);
+            SceneTransitionManager.Instance.LoadScene(sceneToLoad);
+            // SceneManager.LoadSceneAsync(sceneToLoad);
         }
     }
 }

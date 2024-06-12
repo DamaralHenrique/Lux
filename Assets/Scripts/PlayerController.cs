@@ -15,17 +15,68 @@ public class PlayerController : MonoBehaviour
     public float collisionRadius = 0.2f;
     public float interactRadius = 0.2f;
 
+    public Vector3 startSpawnPosition = Vector3.zero;
+
     private bool isMoving;
     private Vector2 facingDirection;
 
     private Animator animator;
     private InventoryManager inventoryManager;
 
+    private static PlayerController instance;
+
+    // void OnEnable()
+    // {
+    //     SceneManager.sceneLoaded += OnSceneLoaded;
+    // }
+
+    // void OnDisable()
+    // {
+    //     SceneManager.sceneLoaded -= OnSceneLoaded;
+    // }
+
+    // void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    // {
+    //     animator = GameObject.Find("Character").GetComponent<Animator>();
+    // }
+
     void Awake()
     {
+        Debug.Log("PlayerController Awake");
+        if (instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        instance = this;
+        DontDestroyOnLoad(gameObject);
         animator = GetComponent<Animator>();
         inventoryManager = FindObjectOfType<InventoryManager>();
+
+        Vector3 spawnPosition;
+        string lastScene = SceneTransitionManager.Instance.GetLastScene();
+
+        if (lastScene == null)
+        {
+            Debug.Log("First scene");
+            spawnPosition = startSpawnPosition;
+        }
+        else
+        {
+            Debug.Log("Last scene: " + lastScene);
+            spawnPosition = GameObject.Find("SpawnPoint"+lastScene).transform.position;
+        }
+
+        transform.position = spawnPosition;
+        Debug.Log("Player position: " + transform.position);
     }
+
+    // private void Start()
+    // {
+    //     Debug.Log("PlayerController Start");
+
+        
+    // }
 
     public void HandleUpdate()
     {

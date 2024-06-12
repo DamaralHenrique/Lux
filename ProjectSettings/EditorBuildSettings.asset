@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BlueTemple.unity
     guid: e59ce0d177d2bfb42b9207d668154ea2
+  - enabled: 1
+    path: Assets/Scenes/LivingRoom.unity
+    guid: fc4aabbf532eeb745ac0ef7884026469
   m_configObjects: {}

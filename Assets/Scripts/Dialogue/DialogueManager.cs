@@ -42,10 +42,7 @@ public class DialogueManager : MonoBehaviour
     private void Awake()
     {
         Instance = this; // In order to reference in any class
-    }
 
-    private void Start()
-    {
         dialogueBox.SetActive(false);
         inputFieldAndButton.SetActive(false);
         choicePanel.SetActive(false);
