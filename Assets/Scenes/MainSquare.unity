@@ -3787,6 +3787,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnPointLivingRoom
       objectReference: {fileID: 0}
+    - target: {fileID: 1284178693144180574, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1847177090866945038, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
       propertyPath: sceneToLoad
       value: Scenes/LivingRoom
@@ -3850,6 +3854,10 @@ PrefabInstance:
     - target: {fileID: 8788306414535559478, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
       propertyPath: m_Name
       value: Portal (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8788306414535559478, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5605,6 +5613,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnPointBlueTemple
       objectReference: {fileID: 0}
+    - target: {fileID: 1284178693144180574, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2879881705358832372, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10.16
@@ -5652,6 +5664,10 @@ PrefabInstance:
     - target: {fileID: 8788306414535559478, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
       propertyPath: m_Name
       value: Portal
+      objectReference: {fileID: 0}
+    - target: {fileID: 8788306414535559478, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15856,10 +15872,13 @@ MonoBehaviour:
     m_Bits: 512
   disappearOnPuzzleCompleteLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   totemLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4096
+  portalLayer:
+    serializedVersion: 2
+    m_Bits: 1024
   collisionRadius: 0.2
   interactRadius: 0.2
   startSpawnPosition: {x: -0.08, y: 0.77, z: -5.47}

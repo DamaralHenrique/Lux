@@ -20,6 +20,11 @@ public class CameraController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        if (target == null)
+        {
+            Debug.Log("Target not found for camera. Searching for Player instance...");
+            target = PlayerController.Instance.transform;
+        }
         _offset = transform.position - target.position;
     }
 

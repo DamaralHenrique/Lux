@@ -1,19 +1,20 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = .01f;
+    public float speed = 0.01f;
     public LayerMask solidObjectLayer;
     public LayerMask interactableLayer;
     public LayerMask floorLayer;
     public LayerMask disappearOnPuzzleCompleteLayer;
     public LayerMask totemLayer;
+    public LayerMask portalLayer;
 
     public float collisionRadius = 0.2f;
     public float interactRadius = 0.2f;
+    public float portalRadius = 0.1f;
 
     public Vector3 startSpawnPosition = Vector3.zero;
 
@@ -23,36 +24,59 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private InventoryManager inventoryManager;
 
-    private static PlayerController instance;
+    private Coroutine moveCoroutine;
 
-    // void OnEnable()
-    // {
-    //     SceneManager.sceneLoaded += OnSceneLoaded;
-    // }
+    public static PlayerController Instance;
 
-    // void OnDisable()
-    // {
-    //     SceneManager.sceneLoaded -= OnSceneLoaded;
-    // }
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
 
-    // void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    // {
-    //     animator = GameObject.Find("Character").GetComponent<Animator>();
-    // }
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (moveCoroutine != null)
+        {
+            StopCoroutine(moveCoroutine);
+            moveCoroutine = null;
+        }
+        isMoving = false;
+        facingDirection = Vector2.zero;
+
+        // Reset da animação para evitar o bug do personagem preso no estado de movimento
+        if (animator != null)
+        {
+            animator.SetBool("isMoving", false);
+            animator.SetFloat("moveX", 0);
+            animator.SetFloat("moveY", 0);
+        }
+
+        SetPlayerPositionOnSceneLoad();
+    }
 
     void Awake()
     {
         Debug.Log("PlayerController Awake");
-        if (instance != null)
+        if (Instance != null)
         {
             Destroy(gameObject);
             return;
         }
-        instance = this;
+        Instance = this;
         DontDestroyOnLoad(gameObject);
         animator = GetComponent<Animator>();
         inventoryManager = FindObjectOfType<InventoryManager>();
 
+        SetPlayerPositionOnSceneLoad();
+    }
+
+    void SetPlayerPositionOnSceneLoad()
+    {
         Vector3 spawnPosition;
         string lastScene = SceneTransitionManager.Instance.GetLastScene();
 
@@ -64,7 +88,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             Debug.Log("Last scene: " + lastScene);
-            spawnPosition = GameObject.Find("SpawnPoint"+lastScene).transform.position;
+            spawnPosition = GameObject.Find("SpawnPoint" + lastScene).transform.position;
         }
 
         transform.position = spawnPosition;
@@ -103,7 +127,21 @@ public class PlayerController : MonoBehaviour
                 {
                     float targetHeight = GetTargetHeight(targetPos);
                     targetPos.y = targetHeight;
-                    StartCoroutine(Move(targetPos));
+
+                    // var triggerables = Physics.OverlapSphere(targetPos, portalRadius, portalLayer);
+                    // if (triggerables.Length != 0)
+                    // {
+                    //     Debug.Log("Portal detected");
+                    //     transform.position = Vector3.MoveTowards(transform.position, targetPos, speed);
+                    // }
+                    // else
+                    // {
+                    if (moveCoroutine != null)
+                    {
+                        StopCoroutine(moveCoroutine);
+                    }
+                    moveCoroutine = StartCoroutine(Move(targetPos));
+                    // }
                 }
             }
         }
@@ -133,6 +171,7 @@ public class PlayerController : MonoBehaviour
         transform.position = targetPos;
 
         isMoving = false;
+        moveCoroutine = null;
     }
 
     private bool IsWalkable(Vector3 targetPos)
