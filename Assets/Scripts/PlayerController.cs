@@ -1,19 +1,22 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = .01f;
+    public float speed = 0.01f;
     public LayerMask solidObjectLayer;
     public LayerMask interactableLayer;
     public LayerMask floorLayer;
     public LayerMask disappearOnPuzzleCompleteLayer;
     public LayerMask totemLayer;
+    public LayerMask portalLayer;
 
     public float collisionRadius = 0.2f;
     public float interactRadius = 0.2f;
+    public float portalRadius = 0.1f;
+
+    public Vector3 startSpawnPosition = Vector3.zero;
 
     private bool isMoving;
     private Vector2 facingDirection;
@@ -21,11 +24,81 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private InventoryManager inventoryManager;
 
+    private Coroutine moveCoroutine;
+
+    public static PlayerController Instance;
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (moveCoroutine != null)
+        {
+            StopCoroutine(moveCoroutine);
+            moveCoroutine = null;
+        }
+        isMoving = false;
+        facingDirection = Vector2.zero;
+
+        // Reset da animação para evitar o bug do personagem preso no estado de movimento
+        if (animator != null)
+        {
+            animator.SetBool("isMoving", false);
+            animator.SetFloat("moveX", 0);
+            animator.SetFloat("moveY", 0);
+        }
+
+        SetPlayerPositionOnSceneLoad();
+    }
+
     void Awake()
     {
+        Debug.Log("PlayerController Awake");
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
         animator = GetComponent<Animator>();
         inventoryManager = FindObjectOfType<InventoryManager>();
+
+        SetPlayerPositionOnSceneLoad();
     }
+
+    void SetPlayerPositionOnSceneLoad()
+    {
+        Vector3 spawnPosition;
+        string lastScene = SceneTransitionManager.Instance.GetLastScene();
+
+        if (lastScene == null)
+        {
+            Debug.Log("First scene");
+            spawnPosition = startSpawnPosition;
+        }
+        else
+        {
+            Debug.Log("Last scene: " + lastScene);
+            spawnPosition = GameObject.Find("SpawnPoint" + lastScene).transform.position;
+        }
+
+        transform.position = spawnPosition;
+        Debug.Log("Player position: " + transform.position);
+    }
+
+    // private void Start()
+    // {
+    //     Debug.Log("PlayerController Start");
+    // }
 
     public void HandleUpdate()
     {
@@ -52,7 +125,12 @@ public class PlayerController : MonoBehaviour
                 {
                     float targetHeight = GetTargetHeight(targetPos);
                     targetPos.y = targetHeight;
-                    StartCoroutine(Move(targetPos));
+
+                    if (moveCoroutine != null)
+                    {
+                        StopCoroutine(moveCoroutine);
+                    }
+                    moveCoroutine = StartCoroutine(Move(targetPos));
                 }
             }
         }
@@ -82,6 +160,7 @@ public class PlayerController : MonoBehaviour
         transform.position = targetPos;
 
         isMoving = false;
+        moveCoroutine = null;
     }
 
     private bool IsWalkable(Vector3 targetPos)
