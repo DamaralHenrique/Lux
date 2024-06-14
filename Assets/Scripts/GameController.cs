@@ -73,6 +73,11 @@ public class GameController : MonoBehaviour
         currentNPC = npc;
     }
 
+    public NPCController GetCurrentNPC()
+    {
+        return currentNPC;
+    }
+
     private Vector3 CalculateDisplacement() 
     {
         if (playerController.transform.position.x > currentNPC.transform.position.x)
