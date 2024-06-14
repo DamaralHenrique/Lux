@@ -98,8 +98,6 @@ public class PlayerController : MonoBehaviour
     // private void Start()
     // {
     //     Debug.Log("PlayerController Start");
-
-        
     // }
 
     public void HandleUpdate()
@@ -128,20 +126,11 @@ public class PlayerController : MonoBehaviour
                     float targetHeight = GetTargetHeight(targetPos);
                     targetPos.y = targetHeight;
 
-                    // var triggerables = Physics.OverlapSphere(targetPos, portalRadius, portalLayer);
-                    // if (triggerables.Length != 0)
-                    // {
-                    //     Debug.Log("Portal detected");
-                    //     transform.position = Vector3.MoveTowards(transform.position, targetPos, speed);
-                    // }
-                    // else
-                    // {
                     if (moveCoroutine != null)
                     {
                         StopCoroutine(moveCoroutine);
                     }
                     moveCoroutine = StartCoroutine(Move(targetPos));
-                    // }
                 }
             }
         }

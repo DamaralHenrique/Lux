@@ -3782,8 +3782,12 @@ MonoBehaviour:
   totemLayer:
     serializedVersion: 2
     m_Bits: 4096
+  portalLayer:
+    serializedVersion: 2
+    m_Bits: 0
   collisionRadius: 0.2
   interactRadius: 0.2
+  portalRadius: 0.1
   startSpawnPosition: {x: 0, y: 0, z: 0}
 --- !u!65 &1070744967
 BoxCollider:
@@ -4791,7 +4795,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8788306414535559478, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
       propertyPath: m_Name
-      value: Portal
+      value: PortalMainSquare
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
