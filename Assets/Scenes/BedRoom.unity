@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0115542, g: 0.009294415, b: 0.0061879223, a: 1}
+  m_IndirectSpecularColor: {r: 0.0070774024, g: 0.0076100444, b: 0.008323765, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -180,6 +180,75 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6804708a5a9008842a292785841bcf3b, type: 3}
+--- !u!1001 &265574695
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1284178693144180574, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
+      propertyPath: m_Name
+      value: SpawnPointLivingRoom
+      objectReference: {fileID: 0}
+    - target: {fileID: 1847177090866945038, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
+      propertyPath: sceneToLoad
+      value: Scenes/LivingRoom
+      objectReference: {fileID: 0}
+    - target: {fileID: 2879881705358832372, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 2879881705358832372, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.117
+      objectReference: {fileID: 0}
+    - target: {fileID: 2879881705358832372, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2879881705358832372, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2879881705358832372, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2879881705358832372, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2879881705358832372, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2879881705358832372, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2879881705358832372, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2879881705358832372, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4232795150371925750, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8788306414535559478, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
+      propertyPath: m_Name
+      value: PortalLivingRoom
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
 --- !u!1001 &561770949
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -474,3 +543,4 @@ SceneRoots:
   - {fileID: 953126161}
   - {fileID: 1298246822}
   - {fileID: 204906540}
+  - {fileID: 265574695}

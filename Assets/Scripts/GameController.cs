@@ -16,9 +16,11 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log("GameController Awake");
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -28,6 +30,8 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("GameController Start");
+
         DialogueManager.Instance.OnShowDialogue += () => 
         {
             state = GameState.Dialogue;
@@ -67,6 +71,11 @@ public class GameController : MonoBehaviour
     public void SetCurrentNPC(NPCController npc)
     {
         currentNPC = npc;
+    }
+
+    public NPCController GetCurrentNPC()
+    {
+        return currentNPC;
     }
 
     private Vector3 CalculateDisplacement() 

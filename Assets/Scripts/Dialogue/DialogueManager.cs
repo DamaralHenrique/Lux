@@ -23,14 +23,13 @@ public class DialogueManager : MonoBehaviour
     public event Action OnCubePuzzleComplete;
 
     // Add manualmente na cena, em GameController -> DialogueManager
-    public List<int> showInputAtLine = new List<int> {}; 
+    public List<int> showInputAtLine = new List<int> {};
     public List<int> showChoiceAtLine = new List<int> {};
 
-    List<int> cubePuzzleAnswers = new List<int> { 7, 2, 5, 4, 0, 1, 6, 3 };
-    // List<int> cubePuzzleAnswers = new List<int> { 0, 0, 0, 0, 0, 0, 0, 0 }; // For testing
+    // List<int> cubePuzzleAnswers = new List<int> { 7, 2, 5, 4, 0, 1, 6, 3 };
+    List<int> cubePuzzleAnswers = new List<int> { 0, 0, 0, 0, 0, 0, 0, 0 }; // For testing
 
     int currentCubePuzzleIndex = 0;
-
     Dialogue dialogue;
     int currentLine = 0;
     bool isTyping;
@@ -41,11 +40,17 @@ public class DialogueManager : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this; // In order to reference in any class
-    }
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
 
-    private void Start()
-    {
         dialogueBox.SetActive(false);
         inputFieldAndButton.SetActive(false);
         choicePanel.SetActive(false);
@@ -94,13 +99,16 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public IEnumerator ShowDialogue(Dialogue dialogue)
+    public IEnumerator ShowDialogue(Dialogue dialogue, List<int> inputLines = null, List<int> choiceLines = null)
     {
         yield return new WaitForEndOfFrame();
 
         OnShowDialogue?.Invoke();
 
         this.dialogue = dialogue;
+        this.showInputAtLine = inputLines;
+        this.showChoiceAtLine = choiceLines;
+        
         dialogueBox.SetActive(true);
         if (typingCoroutine != null)
         {
@@ -146,7 +154,7 @@ public class DialogueManager : MonoBehaviour
 
     private NPCController GetCurrentNPC()
     {
-        return FindObjectOfType<NPCController>(); 
+        return FindObjectOfType<NPCController>();
     }
 
     private void ChangeDialogue()
@@ -197,7 +205,7 @@ public class DialogueManager : MonoBehaviour
         {
             choicePanel.SetActive(false);
         }
-        
+
         string chosenText = choiceTexts[choiceIndex].text;
         int answer = cubePuzzleAnswers[currentCubePuzzleIndex];
         // Debug.Log("Choice selected: " + chosenText);
@@ -209,7 +217,6 @@ public class DialogueManager : MonoBehaviour
             StopCoroutine(typingCoroutine);
         }
 
-        // typingCoroutine = StartCoroutine(TypeDialogue("You chose: " + chosenText));
         if (choiceIndex == answer)
         {
             typingCoroutine = StartCoroutine(TypeDialogue("Correto!"));
@@ -227,9 +234,7 @@ public class DialogueManager : MonoBehaviour
             ChangeDialogue();
         }
 
-
         currentCubePuzzleIndex++;
-
         dialogueBox.SetActive(true);
     }
 }
