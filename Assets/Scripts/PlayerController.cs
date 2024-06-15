@@ -71,6 +71,7 @@ public class PlayerController : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         animator = GetComponent<Animator>();
         inventoryManager = FindObjectOfType<InventoryManager>();
+        inventoryManager.InitIventory();
 
         SetPlayerPositionOnSceneLoad();
     }
