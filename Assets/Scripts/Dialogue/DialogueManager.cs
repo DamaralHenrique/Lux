@@ -280,8 +280,12 @@ public class DialogueManager : MonoBehaviour
                 HandleUpdate(true);
             }
             break;
+        case "GetGreenTotemTutorial":
+            InventoryManager inventoryManager = FindObjectOfType<InventoryManager>();
+            inventoryManager.AddItem("GreenTotem");
+            break;
         case "EndTutorial":
-            ChangeDialogue();
+            this.ChangeDialogue();
             break;
         default:
             Debug.Log("Ação não reconhecida");
