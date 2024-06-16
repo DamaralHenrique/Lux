@@ -36,6 +36,7 @@ public class DialogueManager : MonoBehaviour
     int currentLine = 0;
     bool isTyping;
     bool isActionLoop = false;
+    bool playerWalkTutorialFirstTime = true;
     int selectedChoiceIndex = 0;
     Coroutine typingCoroutine;
     ActionLine currentActionLine;
@@ -91,7 +92,8 @@ public class DialogueManager : MonoBehaviour
                     UpdateChoiceHighlight();
                 }
                 ActionLine actionLine = doActionAtLine.Find(i => i.line == currentLine);
-                if (doActionAtLine.Find(i => i.line == currentLine) != null)
+                NPCController currentNPC = GetCurrentNPC();
+                if (currentNPC != null && currentNPC.isInitialDialog && doActionAtLine.Find(i => i.line == currentLine) != null)
                 {
                     currentActionLine = actionLine;
                     RunAction(currentActionLine.action);
@@ -264,20 +266,30 @@ public class DialogueManager : MonoBehaviour
     public void RunAction(string actionName){
         switch(actionName) 
         {
+        case "PlayerWalkTutorial":
+            isActionLoop = true;
+            PlayerController playerController = FindObjectOfType<PlayerController>();
+            bool playerIsMoving = playerController.handleAutomaticMove(4, playerWalkTutorialFirstTime);
+            if(playerWalkTutorialFirstTime){
+                playerWalkTutorialFirstTime = false;
+            }
+            if(!playerIsMoving){
+                isActionLoop = false;
+                this.HandleUpdate(true);
+            }
+            break;
         case "ColorOnTutorial":
             isActionLoop = true;
             if (Input.GetKeyDown(KeyCode.Q)){
-                Debug.Log("On light");
                 isActionLoop = false;
-                HandleUpdate(true);
+                this.HandleUpdate(true);
             }
             break;
         case "ColorSwitchTutorial":
             isActionLoop = true;
             if (Input.GetKeyDown(KeyCode.E)){
-                Debug.Log("Change light");
                 isActionLoop = false;
-                HandleUpdate(true);
+                this.HandleUpdate(true);
             }
             break;
         case "GetGreenTotemTutorial":
@@ -285,7 +297,7 @@ public class DialogueManager : MonoBehaviour
             inventoryManager.AddItem("GreenTotem");
             break;
         case "EndTutorial":
-            this.ChangeDialogue();
+            ChangeDialogue();
             break;
         default:
             Debug.Log("Ação não reconhecida");

@@ -45,6 +45,7 @@ public class SceneObjectsManager : MonoBehaviour
         new ObjectState("RedTemple", "NPC RED", true),
         new ObjectState("RedTemple", "RedTotem", true),
         new ObjectState("RedTemple", "Door", true),
+        new ObjectState("LivingRoom", "NPC GREEN", true),
     };
 
     public static SceneObjectsManager Instance { get; private set; }
@@ -68,7 +69,7 @@ public class SceneObjectsManager : MonoBehaviour
     {
         foreach (var state in objectStates)
         {
-            Debug.Log($"Scene: {state.sceneName}, Object: {state.objectName}, Active: {state.isActive}");
+            Debug.Log($"Scene: {state.sceneName}, Object: {state.objectName}, Active: {state.isActive}, useInitialDialogue: {state.useInitialDialogue}");
         }
     }
 

@@ -11,12 +11,23 @@ public class NPCController : MonoBehaviour, Interactable
     [SerializeField] List<int> showInputAtLine = new List<int> {};
     [SerializeField] List<int> showChoiceAtLine = new List<int> {};
     [SerializeField] List<ActionLine> doActionAtLine = new List<ActionLine> {};
+    [SerializeField] public bool interactOnScreenLoad = false;
+
+    public bool hasInteractOnScreenLoad = false;
+
+    public bool isInitialDialog = true;
 
     private Dialogue currentDialogue;
 
     private void Awake()
     {
         currentDialogue = initialDialogue;
+    }
+
+    public void InteractOnScreenLoad()
+    {
+        hasInteractOnScreenLoad = true;
+        this.Interact();
     }
 
     public void Interact()
@@ -32,6 +43,9 @@ public class NPCController : MonoBehaviour, Interactable
 
     public void ChangeDialogue(bool useInitialDialogue)
     {
+
+        hasInteractOnScreenLoad = !useInitialDialogue;
+        isInitialDialog = useInitialDialogue;
         currentDialogue = useInitialDialogue ? initialDialogue : puzzleCompleteDialogue;
     }
 

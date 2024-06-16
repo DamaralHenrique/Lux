@@ -250,4 +250,22 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+    public bool handleAutomaticMove(int distance, bool makeMovement){
+        if(makeMovement && !isMoving){
+            Debug.Log("Setup moving");
+            animator.SetFloat("moveY", distance);
+            Vector3 targetPos = transform.position;
+            targetPos.x += distance;
+            if (moveCoroutine != null)
+            {
+
+                StopCoroutine(moveCoroutine);
+            }
+            moveCoroutine = StartCoroutine(Move(targetPos));
+        }
+        
+        animator.SetBool("isMoving", isMoving);
+        return isMoving;
+    }
 }
