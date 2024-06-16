@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.007150585, g: 0.007634934, b: 0.008374492, a: 1}
+  m_IndirectSpecularColor: {r: 0.0115542, g: 0.009294415, b: 0.0061879223, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2180,8 +2180,8 @@ Transform:
   m_GameObject: {fileID: 227480031}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.92, y: 0.55, z: 2.66}
-  m_LocalScale: {x: 3.5, y: 3.5, z: 0}
+  m_LocalPosition: {x: 9.92, y: 0.66, z: 2.66}
+  m_LocalScale: {x: 4.5, y: 4.5, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1675480724}
@@ -2211,6 +2211,7 @@ MonoBehaviour:
   moveSpeed: 1
   showInputAtLine: 02000000
   showChoiceAtLine: 
+  doActionAtLine: []
 --- !u!1 &228373236 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e0008ee9a3ba9d6458bc8bdbad579be5, type: 3}
@@ -3021,7 +3022,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2879881705358832372, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.77
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2879881705358832372, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5679,6 +5680,7 @@ MonoBehaviour:
   moveSpeed: 1
   showInputAtLine: 
   showChoiceAtLine: 
+  doActionAtLine: []
 --- !u!212 &900222014
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5740,8 +5742,8 @@ Transform:
   m_GameObject: {fileID: 900222009}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 18.92, y: 0.55, z: -2.4}
-  m_LocalScale: {x: 3.5, y: 3.5, z: 0}
+  m_LocalPosition: {x: 18.92, y: 0.66, z: -2.4}
+  m_LocalScale: {x: 4.5, y: 4.5, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 944128091}
@@ -11611,7 +11613,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2879881705358832372, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.77
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2879881705358832372, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12613,6 +12615,7 @@ MonoBehaviour:
   - {fileID: 1888053054}
   showInputAtLine: 
   showChoiceAtLine: 0100000002000000030000000400000005000000060000000700000008000000
+  doActionAtLine: []
 --- !u!114 &1718672797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14197,8 +14200,8 @@ Transform:
   m_GameObject: {fileID: 2000698394}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.08, y: 0.4, z: -5.5}
-  m_LocalScale: {x: 3.5, y: 3.5, z: 0}
+  m_LocalPosition: {x: -0.08, y: 0.471, z: -5.5}
+  m_LocalScale: {x: 4.5, y: 4.5, z: 0}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1716018712}

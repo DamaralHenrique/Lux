@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.007150585, g: 0.007634934, b: 0.008374492, a: 1}
+  m_IndirectSpecularColor: {r: 0.0115542, g: 0.009294415, b: 0.0061879223, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -374,8 +374,8 @@ Transform:
   m_GameObject: {fileID: 175931505}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.15, y: 0.4, z: 0}
-  m_LocalScale: {x: 3.5, y: 3.5, z: 1}
+  m_LocalPosition: {x: -4.15, y: 0.471, z: 0}
+  m_LocalScale: {x: 4.5, y: 4.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 623481235}
@@ -1955,6 +1955,8 @@ MonoBehaviour:
     action: ColorOnTutorial
   - line: 7
     action: ColorSwitchTutorial
+  - line: 9
+    action: GetGreenTotemTutorial
   - line: 15
     action: EndTutorial
 --- !u!65 &678447073
@@ -2066,8 +2068,8 @@ Transform:
   m_GameObject: {fileID: 678447070}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 1.02, y: 1.022, z: 0}
-  m_LocalScale: {x: 3.5, y: 3.5, z: 0}
+  m_LocalPosition: {x: 1.02, y: 0.646, z: 0}
+  m_LocalScale: {x: 4.5, y: 4.5, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 632857173}
@@ -2547,7 +2549,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2879881705358832372, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.77
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2879881705358832372, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3074,7 +3076,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2879881705358832372, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.77
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2879881705358832372, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
       propertyPath: m_LocalPosition.z
