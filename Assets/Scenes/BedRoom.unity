@@ -1506,6 +1506,9 @@ MonoBehaviour:
   portalLayer:
     serializedVersion: 2
     m_Bits: 1024
+  npcLayer:
+    serializedVersion: 2
+    m_Bits: 8192
   collisionRadius: 0.2
   interactRadius: 0.2
   portalRadius: 0.1
