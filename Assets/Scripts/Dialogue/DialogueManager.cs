@@ -269,7 +269,7 @@ public class DialogueManager : MonoBehaviour
         case "PlayerWalkTutorial":
             isActionLoop = true;
             PlayerController playerController = FindObjectOfType<PlayerController>();
-            bool playerIsMoving = playerController.handleAutomaticMove(4, playerWalkTutorialFirstTime);
+            bool playerIsMoving = playerController.handleAutomaticMove(3, playerWalkTutorialFirstTime);
             if(playerWalkTutorialFirstTime){
                 playerWalkTutorialFirstTime = false;
             }

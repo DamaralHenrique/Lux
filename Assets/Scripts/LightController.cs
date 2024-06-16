@@ -19,12 +19,10 @@ public class LightController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            Debug.Log("Color on");
             candleLight.enabled = !candleLight.enabled;
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Debug.Log("Color change");
             if (currentColor < 3)
             {
                 currentColor+= 1;
