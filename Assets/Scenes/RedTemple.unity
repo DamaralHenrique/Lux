@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0115542, g: 0.009294415, b: 0.0061879223, a: 1}
+  m_IndirectSpecularColor: {r: 0.0070774024, g: 0.0076100444, b: 0.008323765, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1236,8 +1236,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 24.200006, y: 0.3, z: 2.0000007}
-  m_Center: {x: 0.000000029802457, y: 0.000001937151, z: 1}
+  m_Size: {x: 24.200006, y: 2, z: 2.0000007}
+  m_Center: {x: 0.000000029802457, y: 1, z: 1}
 --- !u!1 &170583001
 GameObject:
   m_ObjectHideFlags: 0
@@ -2953,9 +2953,25 @@ PrefabInstance:
       propertyPath: sceneToLoad
       value: Scenes/MainSquare
       objectReference: {fileID: 0}
+    - target: {fileID: 1847177090866945038, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
+      propertyPath: spawnPointName
+      value: BackDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 1847177090866945038, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
+      propertyPath: spawnPointSuffix
+      value: BackDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 2879881705358832372, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2879881705358832372, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 2879881705358832372, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.41
+      value: 11.905
       objectReference: {fileID: 0}
     - target: {fileID: 2879881705358832372, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2963,11 +2979,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2879881705358832372, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12
+      value: 10.013
       objectReference: {fileID: 0}
     - target: {fileID: 2879881705358832372, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 2879881705358832372, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
       propertyPath: m_LocalRotation.x
@@ -2975,7 +2991,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2879881705358832372, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 2879881705358832372, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
       propertyPath: m_LocalRotation.z
@@ -2987,7 +3003,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2879881705358832372, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 2879881705358832372, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -6630,6 +6646,10 @@ PrefabInstance:
       propertyPath: sceneToLoad
       value: Scenes/MainSquare
       objectReference: {fileID: 0}
+    - target: {fileID: 1847177090866945038, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
+      propertyPath: spawnPointName
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2879881705358832372, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.41
@@ -6672,7 +6692,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4232795150371925750, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1
+      value: 0.487
       objectReference: {fileID: 0}
     - target: {fileID: 8788306414535559478, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
       propertyPath: m_Name
@@ -9579,7 +9599,8 @@ GameObject:
   - component: {fileID: 1224769111}
   - component: {fileID: 1224769110}
   - component: {fileID: 1224769109}
-  m_Layer: 8
+  - component: {fileID: 1224769113}
+  m_Layer: 7
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9605,7 +9626,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 0.7
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
@@ -9674,6 +9695,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1380414663}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1224769113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1224769108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89599e3fcfd2c9444abf05d6bac060ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectText:
+    lines:
+    - "[Texto provis\xF3rio] Parab\xE9ns, voc\xEA obteu o totem vermelho. "
+    - "Para sair do labirinto, dirija-se \xE0 porta de sa\xEDda \xE0 sua direita"
 --- !u!1 &1233533391 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -473063305874550536, guid: 0e1b2526ebfd2d6458885d3b24735b7a, type: 3}
@@ -12396,6 +12433,9 @@ MonoBehaviour:
   showInputAtLine: 
   showChoiceAtLine: 
   doActionAtLine: []
+  interactOnScreenLoad: 0
+  hasInteractOnScreenLoad: 0
+  isInitialDialog: 1
 --- !u!65 &1658165672
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14265,6 +14305,8 @@ GameObject:
   - component: {fileID: 1848551709}
   - component: {fileID: 1848551708}
   - component: {fileID: 1848551711}
+  - component: {fileID: 1848551712}
+  - component: {fileID: 1848551713}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -14349,6 +14391,30 @@ MonoBehaviour:
   blueTotem: {fileID: 2030736101}
   redTotem: {fileID: 1305857018}
   greenTotem: {fileID: 1045079307}
+--- !u!114 &1848551712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848551707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a543a70d7138789419e66df6812b1a82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1848551713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848551707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5532f1bf06e15174bbf531219d1b2089, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1878055424
 GameObject:
   m_ObjectHideFlags: 0
@@ -14878,6 +14944,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b4060ae4edf538c4ebca27de53159da7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1930836520}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b4060ae4edf538c4ebca27de53159da7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1930836523}
   m_SourcePrefab: {fileID: 100100000, guid: b4060ae4edf538c4ebca27de53159da7, type: 3}
 --- !u!4 &1922661893 stripped
 Transform:
@@ -14920,7 +14989,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 1.5
   m_Height: 1.4641023
   m_Direction: 1
   m_Center: {x: 0.28283384, y: 0.26794922, z: -0.000000042591466}
@@ -14951,6 +15020,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &1930836523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930836517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89599e3fcfd2c9444abf05d6bac060ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectText:
+    lines:
+    - 
+    - 
 --- !u!1001 &1956633476
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16747,7 +16832,7 @@ MonoBehaviour:
   collisionRadius: 0.2
   interactRadius: 0.2
   portalRadius: 0.1
-  startSpawnPosition: {x: 0, y: 0.4, z: -11.5}
+  startSpawnPosition: {x: -0.5, y: 0.525, z: -11.5}
 --- !u!95 &2130852345
 Animator:
   serializedVersion: 5

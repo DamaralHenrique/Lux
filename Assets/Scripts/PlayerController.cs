@@ -1,3 +1,4 @@
+using System; // For Action
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -18,6 +19,8 @@ public class PlayerController : MonoBehaviour
     public float portalRadius = 0.1f;
 
     public Vector3 startSpawnPosition = Vector3.zero;
+
+    public Action OnRedTemplePuzzleComplete;
 
     private bool isMoving;
     private Vector2 facingDirection;
@@ -81,6 +84,7 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 spawnPosition;
         string lastScene = SceneTransitionManager.Instance.GetLastScene();
+        string spawnPointSuffix = SceneTransitionManager.Instance.GetSpawnPointSuffix();
 
         if (lastScene == null)
         {
@@ -90,7 +94,8 @@ public class PlayerController : MonoBehaviour
         else
         {
             Debug.Log("Last scene: " + lastScene);
-            spawnPosition = GameObject.Find("SpawnPoint" + lastScene).transform.position;
+            var spawnPointName = "SpawnPoint" + lastScene + spawnPointSuffix;
+            spawnPosition = GameObject.Find(spawnPointName).transform.position;
         }
 
         transform.position = spawnPosition;
@@ -189,24 +194,35 @@ public class PlayerController : MonoBehaviour
         RaycastHit hitUp;
         RaycastHit hitDown;
 
-        // Raycast upwards to detect climbable objects
-        float characterHeight = 0.5f;
-        if (Physics.Raycast(targetPos - Vector3.up * characterHeight, Vector3.up, out hitUp, 1.0f, floorLayer))
-        {
-            Debug.Log("Climbable object");
-            Debug.Log("Hit point: " + hitUp.point.y);
-            float ascPosY = hitUp.point.y + characterHeight + 0.35f;
-            Debug.Log("New pos-y: " + ascPosY);
+        // Constants for character height and floor collision adjustment
+        float characterHeight = 0.471f;
+        float floorBoxCollisionZ = 0.02f;
+        float climbHeightAdjustment = 0.35f;
+        float raycastDistance = 1.0f;
 
+        // Raycast upwards to detect climbable objects
+        if (Physics.Raycast(targetPos - Vector3.up * characterHeight, Vector3.up, out hitUp, raycastDistance, floorLayer))
+        {
+            // Debug.Log("Climbable object");
+            // Debug.Log("Hit point: " + hitUp.point.y);
+            float ascPosY = hitUp.point.y + characterHeight + climbHeightAdjustment;
+            // Debug.Log("New pos-y: " + ascPosY);
             return ascPosY;
         }
         
         // Raycast downwards to detect descendable areas
-        Physics.Raycast(targetPos, Vector3.down, out hitDown, 100, floorLayer);
-        float floorBoxColisionZ = 0.02f;
-        float posY = hitUp.point.y + characterHeight + floorBoxColisionZ;
+        if (Physics.Raycast(targetPos, Vector3.down, out hitDown, 100, floorLayer))
+        {
+            // Debug.Log("Descendable area");
+            // Debug.Log("Hit point: " + hitDown.point.y);
+            float posY = hitDown.point.y + characterHeight + floorBoxCollisionZ;
+            // Debug.Log("New pos-y: " + posY);
+            return posY;
+        }
 
-        return posY;
+        // Default to current y-position if nothing detected
+        // Debug.Log("No climbable or descendable objects detected");
+        return targetPos.y;
     }
 
     void Interact()
@@ -236,17 +252,7 @@ public class PlayerController : MonoBehaviour
             Scene scene = SceneManager.GetActiveScene();
             if (scene.name == "RedTemple")
             {
-                int layer = LayerMask.NameToLayer("DisappearOnPuzzleComplete");
-                GameObject[] allObjects = GameObject.FindObjectsOfType<GameObject>();
-
-                foreach (GameObject obj in allObjects)
-                {
-                    if (obj.layer == layer)
-                    {
-                        Debug.Log(obj.name);
-                        obj.SetActive(false);
-                    }
-                }
+                OnRedTemplePuzzleComplete?.Invoke();
             }
         }
     }

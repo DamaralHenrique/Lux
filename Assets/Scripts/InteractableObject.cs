@@ -15,7 +15,7 @@ public class InteractableObject : MonoBehaviour, Interactable
 
     public void Interact()
     {
-        if (gameObject.name == "altar")
+        if (gameObject.name == "altar_pilar")
         {
             AddTotemToAltar();
         }

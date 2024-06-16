@@ -81,6 +81,30 @@ public class GameController : MonoBehaviour
                 }
             }
         };
+        PlayerController.Instance.OnRedTemplePuzzleComplete += () =>
+        {
+            int layer = LayerMask.NameToLayer("DisappearOnPuzzleComplete");
+            GameObject[] allObjects = GameObject.FindObjectsOfType<GameObject>();
+
+            foreach (GameObject obj in allObjects)
+            {
+                if (obj.layer == layer)
+                {
+                    Debug.Log(obj.name);
+                    obj.SetActive(false);
+                    SceneObjectsManager.Instance.SetObjectActiveState(
+                        SceneManager.GetActiveScene().name, 
+                        obj.name, 
+                        false
+                    ); // Salva o estado de "portas abertas" pós conclusão do puzzle
+                    SceneObjectsManager.Instance.SetObjectActiveState(
+                        "MainSquare", 
+                        "Door", 
+                        false
+                    ); // Salva o estado de "portas abertas" pós conclusão do puzzle
+                }
+            }
+        };
     }
 
     public void SetCurrentNPC(NPCController npc)

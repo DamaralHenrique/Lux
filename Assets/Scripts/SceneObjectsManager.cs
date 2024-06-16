@@ -38,6 +38,7 @@ public class SceneObjectsManager : MonoBehaviour
         new ObjectState("MainSquare", "RedTotem", false),
         new ObjectState("MainSquare", "GreenTotem", false),
         new ObjectState("MainSquare", "NPC RED - Guarda", true),
+        new ObjectState("MainSquare", "Door", true),
         new ObjectState("BlueTemple", "Door_frame.001", true),
         new ObjectState("BlueTemple", "Door_frame.002", true),
         new ObjectState("BlueTemple", "BlueTotem", true),

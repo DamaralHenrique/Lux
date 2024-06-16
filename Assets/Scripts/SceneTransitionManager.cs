@@ -6,6 +6,7 @@ public class SceneTransitionManager : MonoBehaviour
     public static SceneTransitionManager Instance;
 
     private string lastScene;
+    private string spawnPointSuffix;
 
     void Awake()
     {
@@ -21,9 +22,10 @@ public class SceneTransitionManager : MonoBehaviour
         }
     }
 
-    public void LoadScene(string sceneName)
+    public void LoadScene(string sceneName, string spawnPointSuffix)
     {
         lastScene = SceneManager.GetActiveScene().name;
+        this.spawnPointSuffix = spawnPointSuffix;
         SceneManager.LoadScene(sceneName);
     }
 
@@ -34,6 +36,11 @@ public class SceneTransitionManager : MonoBehaviour
 
     public string GetLastScene()
     {
-        return lastScene;
+        return this.lastScene;
+    }
+
+    public string GetSpawnPointSuffix()
+    {
+        return this.spawnPointSuffix;
     }
 }
