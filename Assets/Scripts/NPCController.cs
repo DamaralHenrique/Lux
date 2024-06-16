@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class NPCController : MonoBehaviour, Interactable
 {
@@ -9,6 +10,7 @@ public class NPCController : MonoBehaviour, Interactable
     [SerializeField] float moveSpeed = 0.05f;
     [SerializeField] List<int> showInputAtLine = new List<int> {};
     [SerializeField] List<int> showChoiceAtLine = new List<int> {};
+    [SerializeField] List<ActionLine> doActionAtLine = new List<ActionLine> {};
 
     private Dialogue currentDialogue;
 
@@ -20,7 +22,7 @@ public class NPCController : MonoBehaviour, Interactable
     public void Interact()
     {
         GameController.Instance.SetCurrentNPC(this);
-        StartCoroutine(DialogueManager.Instance.ShowDialogue(currentDialogue, showInputAtLine, showChoiceAtLine));
+        StartCoroutine(DialogueManager.Instance.ShowDialogue(currentDialogue, showInputAtLine, showChoiceAtLine, doActionAtLine));
     }
 
     public void ChangeToPuzzleCompleteDialogue()

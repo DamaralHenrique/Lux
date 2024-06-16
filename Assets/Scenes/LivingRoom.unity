@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0070774024, g: 0.0076100444, b: 0.008323765, a: 1}
+  m_IndirectSpecularColor: {r: 0.0115542, g: 0.009294415, b: 0.0061879223, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1571,6 +1571,100 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &632857172
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 632857173}
+  - component: {fileID: 632857174}
+  m_Layer: 7
+  m_Name: NPC Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &632857173
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632857172}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.185, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 678447076}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!108 &632857174
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632857172}
+  m_Enabled: 1
+  serializedVersion: 10
+  m_Type: 2
+  m_Shape: 0
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
+  m_Intensity: 1
+  m_Range: 3
+  m_SpotAngle: 30
+  m_InnerSpotAngle: 21.80208
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1001 &671897592
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1744,6 +1838,222 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfd4e17c79fd43849bcdb96b3a0e2a98, type: 3}
+--- !u!1 &678447070
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 678447076}
+  - component: {fileID: 678447075}
+  - component: {fileID: 678447074}
+  - component: {fileID: 678447073}
+  - component: {fileID: 678447072}
+  - component: {fileID: 678447071}
+  m_Layer: 7
+  m_Name: NPC GREEN
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!95 &678447071
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678447070}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 81af1a79e360e6e4cbf877e891f84530, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &678447072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678447070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4c95d609f73f904aa6cdc52ddd3979f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialDialogue:
+    lines:
+    - "Ol\xE1 Lux! \xC9 bom v\xEA-lo acordado!"
+    - "Tenho uma grande not\xEDcia para te falar! Fiz uma grande descoberta na minha
+      pesquisa sobre as cores e sobre a nossa antiga civiliza\xE7\xE3o!"
+    - "Voc\xEA est\xE1 ciente que temos os 3 povos: azuis, vermelhos e n\xF3s, os
+      verdes, correto?"
+    - "Vivemos em disc\xF3rdia atualmente, mas os registros sugerem que viv\xEDamos
+      em uni\xE3o antigamente"
+    - "E o uso conjunto das 3 cores \xE9 a chave para retomar o equil\xEDbrio!"
+    - "Guardei esse segredo de voc\xEA h\xE1 muito tempo, mas voc\xEA \xE9 especial
+      pois \xE9 capaz de emanar todas as 3 cores dos povos!"
+    - Vamos botar para teste, aperte [Q] para ligar a luz
+    - "Isso! Agora voc\xEA est\xE1 emanando sua luz! Agora aperte [E] para alterar
+      sua cor!"
+    - "Perfeito! Com essas cores voc\xEA pode ver e entender o mundo de forma mais
+      completa que qualquer outra pessoa!"
+    - "Agora que voc\xEA sabe usar seu poder, posso te entregar um importante item\u2026
+      o totem verde"
+    - "Guardei ele em seguran\xE7a por muitos anos. Ele faz parte de um conjunto
+      de 3 totens, um correspondente a cada cor dos povos, que foram deixados pela
+      nossa antiga civiliza\xE7\xE3o"
+    - "O povo vermelho e azul t\xEAm seus totens guardados em seus templos, acredito
+      que eles n\xE3o foram capazes de resolver os enigmas deixados para os proteger"
+    - "Sua miss\xE3o \xE9 obter os 3 totens e oferecer eles ao altar central da pra\xE7a"
+    - "Como sua habilidade \xFAnica permite que voc\xEA veja o mundo com as 3 cores,
+      s\xF3 voc\xEA \xE9 capaz de resolver os enigmas de cada templo"
+    - Deixei ali na parede um resumo das minhas descobertas. talvez te ajude na sua
+      descoberta
+    - "Estou confiando em voc\xEA Lux"
+  puzzleCompleteDialogue:
+    lines:
+    - "Como sua habilidade \xFAnica permite que voc\xEA veja o mundo com as 3 cores,
+      s\xF3 voc\xEA \xE9 capaz de resolver os enigmas de cada templo"
+    - "Sua miss\xE3o \xE9 obter os 3 totens e oferecer eles ao altar central da pra\xE7a"
+    - "Estou confiando em voc\xEA Lux"
+  moveSpeed: 0.05
+  showInputAtLine: 
+  showChoiceAtLine: 
+  doActionAtLine:
+  - line: 6
+    action: ColorOnTutorial
+  - line: 7
+    action: ColorSwitchTutorial
+  - line: 15
+    action: EndTutorial
+--- !u!65 &678447073
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678447070}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.36, y: 0.64, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &678447074
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678447070}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
+--- !u!212 &678447075
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678447070}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 9f76ec427dda2ad4dbcb492db68c3284, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.16, y: 0.32}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &678447076
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678447070}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 1.02, y: 1.022, z: 0}
+  m_LocalScale: {x: 3.5, y: 3.5, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 632857173}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1001 &788019360
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1758,7 +2068,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3510d93c152a97b44aa0cb91ec7e05bf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.505051
+      value: 9.371
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3510d93c152a97b44aa0cb91ec7e05bf, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2149,7 +2459,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 41d73eed1355cc34fb1b5ea5be29ce77, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.663
+      value: 0.5139493
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 41d73eed1355cc34fb1b5ea5be29ce77, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2643,7 +2953,7 @@ Transform:
   m_GameObject: {fileID: 1366070816}
   serializedVersion: 2
   m_LocalRotation: {x: 0.13280462, y: -0, z: -0, w: 0.9911423}
-  m_LocalPosition: {x: -0.109, y: 1.56, z: -8.81}
+  m_LocalPosition: {x: -3.854, y: 1.56, z: -4.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3384,6 +3694,7 @@ MonoBehaviour:
   - {fileID: 326653549}
   showInputAtLine: 
   showChoiceAtLine: 0100000002000000030000000400000005000000060000000700000008000000
+  doActionAtLine: []
 --- !u!114 &1735470347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3585,3 +3896,4 @@ SceneRoots:
   - {fileID: 1735470350}
   - {fileID: 326653545}
   - {fileID: 1882086037}
+  - {fileID: 678447076}
