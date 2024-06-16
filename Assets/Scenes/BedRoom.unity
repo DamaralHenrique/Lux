@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0070774024, g: 0.0076100444, b: 0.008323765, a: 1}
+  m_IndirectSpecularColor: {r: 0.007150585, g: 0.007634934, b: 0.008374492, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1282,13 +1282,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 991104721}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.13280462, y: -0, z: -0, w: 0.9911423}
-  m_LocalPosition: {x: -0.109, y: 1.56, z: -8.81}
+  m_LocalRotation: {x: 0.13917309, y: 0, z: 0, w: 0.9902681}
+  m_LocalPosition: {x: -1.5, y: 1.6, z: -2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 15.263, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 16, y: 0, z: 0}
 --- !u!1 &1277356053 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 921391927218321214, guid: 0080e4c441341eb43a75ddb6873295a4, type: 3}
@@ -1452,7 +1452,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.3, y: 0.43199998, z: 0}
+  m_Size: {x: 0.2, y: 0.22, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &1341984368
 Animator:
@@ -1512,7 +1512,7 @@ MonoBehaviour:
   collisionRadius: 0.2
   interactRadius: 0.2
   portalRadius: 0.1
-  startSpawnPosition: {x: -1.64, y: 0.77, z: -0.15}
+  startSpawnPosition: {x: -1.5, y: 0.4, z: 0}
 --- !u!212 &1341984370
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1574,7 +1574,7 @@ Transform:
   m_GameObject: {fileID: 1341984366}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.64, y: 0.77, z: -0.15}
+  m_LocalPosition: {x: -1.5, y: 0.4, z: 0}
   m_LocalScale: {x: 3.5, y: 3.5, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:

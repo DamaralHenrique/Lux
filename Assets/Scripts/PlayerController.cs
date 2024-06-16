@@ -190,7 +190,7 @@ public class PlayerController : MonoBehaviour
         RaycastHit hitDown;
 
         // Raycast upwards to detect climbable objects
-        float characterHeight = 0.77f;
+        float characterHeight = 0.4f;
         if (Physics.Raycast(targetPos - Vector3.up * characterHeight, Vector3.up, out hitUp, 1.0f, floorLayer))
         {
             Debug.Log("Climbable object");
