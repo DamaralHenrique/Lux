@@ -2297,6 +2297,9 @@ MonoBehaviour:
   portalLayer:
     serializedVersion: 2
     m_Bits: 1024
+  npcLayer:
+    serializedVersion: 2
+    m_Bits: 8192
   collisionRadius: 0.2
   interactRadius: 0.2
   portalRadius: 0.1
@@ -2516,7 +2519,7 @@ GameObject:
   - component: {fileID: 1133889126}
   - component: {fileID: 1133889125}
   - component: {fileID: 1133889124}
-  m_Layer: 7
+  m_Layer: 13
   m_Name: NPC BLUE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2930,7 +2933,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1258094304}
   - component: {fileID: 1258094305}
-  m_Layer: 7
+  m_Layer: 13
   m_Name: NPC Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -7,15 +7,23 @@ public class ObjectState
 {
     public string objectName;
     public string sceneName;
-    // public Vector3 position;
     public bool isActive;
+    public bool useInitialDialogue;
+    public Vector3? position; // ? = nullable
 
-    public ObjectState(string sceneName, string objectName, bool isActive)
+    public ObjectState(
+        string sceneName, 
+        string objectName, 
+        bool isActive, 
+        bool useInitialDialogue=true,
+        Vector3? position=null
+    )
     {
         this.sceneName = sceneName;
         this.objectName = objectName;
-        // this.position = position;
         this.isActive = isActive;
+        this.useInitialDialogue = useInitialDialogue;
+        this.position = position;
     }
 }
 
@@ -29,9 +37,14 @@ public class SceneObjectsManager : MonoBehaviour
         new ObjectState("MainSquare", "BlueTotem", false),
         new ObjectState("MainSquare", "RedTotem", false),
         new ObjectState("MainSquare", "GreenTotem", false),
+        new ObjectState("MainSquare", "NPC RED - Guarda", true),
         new ObjectState("BlueTemple", "Door_frame.001", true),
         new ObjectState("BlueTemple", "Door_frame.002", true),
         new ObjectState("BlueTemple", "BlueTotem", true),
+        new ObjectState("BlueTemple", "NPC BLUE", true),
+        new ObjectState("RedTemple", "NPC RED", true),
+        new ObjectState("RedTemple", "RedTotem", true),
+        new ObjectState("RedTemple", "Door", true),
     };
 
     public static SceneObjectsManager Instance { get; private set; }
@@ -50,11 +63,6 @@ public class SceneObjectsManager : MonoBehaviour
             return;
         }
     }
-
-    // void Start()
-    // {
-    //     UpdateStates();
-    // }
 
     void PrintObjectStates()
     {
@@ -75,20 +83,6 @@ public class SceneObjectsManager : MonoBehaviour
                 continue;
             }
 
-            // Old 
-            // GameObject statefulObjects = GameObject.Find("StatefulObjects");
-            // GameObject obj = statefulObjects.transform.Find(state.objectName).gameObject;
-            // if (obj != null)
-            // {
-            //     // obj.transform.position = state.position;
-            //     obj.SetActive(state.isActive);
-            //     Debug.Log($"Scene: {state.sceneName}. Object: {state.objectName}. State: {state.isActive}.");
-            // }
-            // else
-            // {
-            //     Debug.LogWarning($"Object {state.objectName} not found in the scene.");
-            // }
-
             int totemLayer = LayerMask.NameToLayer("Totem");
             int npcLayer = LayerMask.NameToLayer("NPC");
             int disappearOnPuzzleCompleteLayer = LayerMask.NameToLayer("DisappearOnPuzzleComplete");
@@ -104,19 +98,56 @@ public class SceneObjectsManager : MonoBehaviour
                 {
                     // Debug.Log(obj.name);
                     // Debug.Log(state.isActive);
+
+                    // Update active state
                     obj.SetActive(state.isActive);
+                    if (obj.layer == npcLayer)
+                    {
+                        // Update dialogue
+                        obj.GetComponent<NPCController>().ChangeDialogue(state.useInitialDialogue);
+                        
+                        // Update position
+                        if (state.position != null)
+                        {
+                            obj.GetComponent<NPCController>().TeleportNPC((Vector3)state.position);
+                        }
+                    }
                 }
             }
         }
     }
 
-    public void SetObjectState(string sceneName, string objectName, bool isActive)
+    public void SetObjectActiveState(string sceneName, string objectName, bool isActive)
     {
         foreach (var state in objectStates)
         {
             if (state.sceneName == sceneName && state.objectName == objectName)
             {
                 state.isActive = isActive;
+                break;
+            }
+        }
+    }
+
+    public void SetObjectDialogueState(string sceneName, string objectName, bool useInitialDialogue)
+    {
+        foreach (var state in objectStates)
+        {
+            if (state.sceneName == sceneName && state.objectName == objectName)
+            {
+                state.useInitialDialogue = useInitialDialogue;
+                break;
+            }
+        }
+    }
+
+    public void SetObjectPositionState(string sceneName, string objectName, Vector3 newPosition)
+    {
+        foreach (var state in objectStates)
+        {
+            if (state.sceneName == sceneName && state.objectName == objectName)
+            {
+                state.position = newPosition;
                 break;
             }
         }

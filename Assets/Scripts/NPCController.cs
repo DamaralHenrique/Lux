@@ -12,7 +12,7 @@ public class NPCController : MonoBehaviour, Interactable
 
     private Dialogue currentDialogue;
 
-    private void Start()
+    private void Awake()
     {
         currentDialogue = initialDialogue;
     }
@@ -28,10 +28,20 @@ public class NPCController : MonoBehaviour, Interactable
         currentDialogue = puzzleCompleteDialogue;
     }
 
+    public void ChangeDialogue(bool useInitialDialogue)
+    {
+        currentDialogue = useInitialDialogue ? initialDialogue : puzzleCompleteDialogue;
+    }
+
     public void MoveNPC(Vector3 displacement)
     {
         Vector3 targetPos = transform.position + displacement;
         StartCoroutine(Move(targetPos));
+    }
+
+    public void TeleportNPC(Vector3 position)
+    {
+        transform.position = position;
     }
 
     private IEnumerator Move(Vector3 targetPos)

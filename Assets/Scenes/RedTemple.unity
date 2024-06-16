@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0115542, g: 0.009294415, b: 0.0061879223, a: 1}
+  m_IndirectSpecularColor: {r: 0.0070774024, g: 0.0076100444, b: 0.008323765, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7433,7 +7433,7 @@ GameObject:
   m_Component:
   - component: {fileID: 872046755}
   - component: {fileID: 872046756}
-  m_Layer: 7
+  m_Layer: 13
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12347,7 +12347,7 @@ GameObject:
   - component: {fileID: 1658165672}
   - component: {fileID: 1658165671}
   - component: {fileID: 1658165670}
-  m_Layer: 7
+  m_Layer: 13
   m_Name: NPC RED
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16739,6 +16739,9 @@ MonoBehaviour:
   portalLayer:
     serializedVersion: 2
     m_Bits: 1024
+  npcLayer:
+    serializedVersion: 2
+    m_Bits: 8192
   collisionRadius: 0.2
   interactRadius: 0.2
   portalRadius: 0.1

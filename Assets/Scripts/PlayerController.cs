@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask disappearOnPuzzleCompleteLayer;
     public LayerMask totemLayer;
     public LayerMask portalLayer;
+    public LayerMask npcLayer;
 
     public float collisionRadius = 0.2f;
     public float interactRadius = 0.2f;
@@ -167,7 +168,9 @@ public class PlayerController : MonoBehaviour
     private bool IsWalkable(Vector3 targetPos)
     {
         Collider[] collisions = Physics.OverlapSphere(
-            targetPos, collisionRadius, interactableLayer | solidObjectLayer | disappearOnPuzzleCompleteLayer
+            targetPos, 
+            collisionRadius, 
+            interactableLayer | solidObjectLayer | disappearOnPuzzleCompleteLayer | npcLayer
         );
         if (collisions.Length != 0)
         {
@@ -210,7 +213,9 @@ public class PlayerController : MonoBehaviour
     {
         var interactPos = transform.position + new Vector3(facingDirection.x, 0, facingDirection.y);
 
-        var interactableCollider = Physics.OverlapSphere(interactPos, interactRadius, interactableLayer);
+        var interactableCollider = Physics.OverlapSphere(
+            interactPos, interactRadius, interactableLayer | npcLayer
+        );
         if (interactableCollider.Length != 0)
         {
             interactableCollider[0].GetComponent<Interactable>()?.Interact();
@@ -222,7 +227,7 @@ public class PlayerController : MonoBehaviour
             string totemName = TotemCollider[0].gameObject.name;
             inventoryManager.AddItem(totemName);
             TotemCollider[0].gameObject.SetActive(false);
-            SceneObjectsManager.Instance.SetObjectState(
+            SceneObjectsManager.Instance.SetObjectActiveState(
                 SceneManager.GetActiveScene().name, 
                 totemName, 
                 false

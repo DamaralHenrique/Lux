@@ -30,7 +30,7 @@ public class InteractableObject : MonoBehaviour, Interactable
         for (int i = 0; i < inventoryManager.inventory.Count; i++)
         {
             string gameObjectName = inventoryManager.inventory[i];
-            SceneObjectsManager.Instance.SetObjectState("MainSquare", gameObjectName, true);
+            SceneObjectsManager.Instance.SetObjectActiveState("MainSquare", gameObjectName, true);
             SceneObjectsManager.Instance.UpdateStates();
         }
     }

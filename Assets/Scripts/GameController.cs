@@ -50,6 +50,15 @@ public class GameController : MonoBehaviour
             {
                 Vector3 displacement = CalculateDisplacement();
                 currentNPC.MoveNPC(displacement);
+
+                // Salva a nova posição do NPC após a resolução do puzzle.
+                // Assim, mesmo ao trocar de cenas, a informação do NPC é mantida.
+                Vector3 newPosition = currentNPC.transform.position + displacement;
+                SceneObjectsManager.Instance.SetObjectPositionState(
+                    SceneManager.GetActiveScene().name, 
+                    currentNPC.name, 
+                    newPosition
+                );
             }
         };
         DialogueManager.Instance.OnCubePuzzleComplete += () =>
@@ -64,7 +73,7 @@ public class GameController : MonoBehaviour
                 {
                     Debug.Log(obj.name);
                     obj.SetActive(false);
-                    SceneObjectsManager.Instance.SetObjectState(
+                    SceneObjectsManager.Instance.SetObjectActiveState(
                         SceneManager.GetActiveScene().name, 
                         obj.name, 
                         false

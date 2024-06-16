@@ -2043,7 +2043,7 @@ GameObject:
   - component: {fileID: 227480034}
   - component: {fileID: 227480032}
   - component: {fileID: 227480038}
-  m_Layer: 7
+  m_Layer: 13
   m_Name: NPC RED - Guarda
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5631,7 +5631,7 @@ GameObject:
   - component: {fileID: 900222010}
   - component: {fileID: 900222017}
   - component: {fileID: 900222016}
-  m_Layer: 7
+  m_Layer: 13
   m_Name: NPC RED - Placas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6236,7 +6236,7 @@ GameObject:
   m_Component:
   - component: {fileID: 944128091}
   - component: {fileID: 944128092}
-  m_Layer: 7
+  m_Layer: 13
   m_Name: NPC Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11672,7 +11672,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1675480724}
   - component: {fileID: 1675480725}
-  m_Layer: 7
+  m_Layer: 13
   m_Name: NPC Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14129,6 +14129,9 @@ MonoBehaviour:
   portalLayer:
     serializedVersion: 2
     m_Bits: 1024
+  npcLayer:
+    serializedVersion: 2
+    m_Bits: 8192
   collisionRadius: 0.2
   interactRadius: 0.2
   portalRadius: 0.1
