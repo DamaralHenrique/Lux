@@ -764,7 +764,7 @@ Transform:
   m_GameObject: {fileID: 373633171}
   serializedVersion: 2
   m_LocalRotation: {x: 0.09586148, y: -0, z: -0, w: 0.99539477}
-  m_LocalPosition: {x: 0, y: 1.32, z: -6.3}
+  m_LocalPosition: {x: 0, y: 1.6, z: -5.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2297,10 +2297,13 @@ MonoBehaviour:
   portalLayer:
     serializedVersion: 2
     m_Bits: 1024
+  npcLayer:
+    serializedVersion: 2
+    m_Bits: 8192
   collisionRadius: 0.2
   interactRadius: 0.2
   portalRadius: 0.1
-  startSpawnPosition: {x: 0, y: 0.77, z: -3.26}
+  startSpawnPosition: {x: 0, y: 0.4, z: -3.3}
 --- !u!65 &1070744967
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2320,7 +2323,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.3, y: 0.43199998, z: 0}
+  m_Size: {x: 0.2, y: 0.22, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &1070744968
 Animator:
@@ -2404,7 +2407,7 @@ Transform:
   m_GameObject: {fileID: 1070744965}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.77, z: -3.26}
+  m_LocalPosition: {x: 0, y: 0.4, z: -3.3}
   m_LocalScale: {x: 3.5, y: 3.5, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2516,7 +2519,7 @@ GameObject:
   - component: {fileID: 1133889126}
   - component: {fileID: 1133889125}
   - component: {fileID: 1133889124}
-  m_Layer: 7
+  m_Layer: 13
   m_Name: NPC BLUE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2593,7 +2596,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.36, y: 0.64, z: 0.2}
+  m_Size: {x: 0.2, y: 0.3, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &1133889127
 Rigidbody:
@@ -2683,7 +2686,7 @@ Transform:
   m_GameObject: {fileID: 1133889123}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 1.92, y: 1.08, z: -0.069}
+  m_LocalPosition: {x: 1.92, y: 0.55, z: -0.069}
   m_LocalScale: {x: 3.5, y: 3.5, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2930,7 +2933,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1258094304}
   - component: {fileID: 1258094305}
-  m_Layer: 7
+  m_Layer: 13
   m_Name: NPC Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}

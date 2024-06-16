@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro; // For TextMeshProUGUI
 
 public class DialogueManager : MonoBehaviour
@@ -178,6 +179,13 @@ public class DialogueManager : MonoBehaviour
         if (currentNPC != null)
         {
             currentNPC.ChangeToPuzzleCompleteDialogue();
+            // Salva o estado de "diálogo de puzzle completo". Assim, mesmo trocando
+            // de cena, o diálogo correto será exibido ao interagir com o NPC novamente
+            SceneObjectsManager.Instance.SetObjectDialogueState(
+                SceneManager.GetActiveScene().name,
+                currentNPC.gameObject.name,
+                false
+            );
         }
     }
 
