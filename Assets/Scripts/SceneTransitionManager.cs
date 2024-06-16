@@ -24,7 +24,7 @@ public class SceneTransitionManager : MonoBehaviour
     public void LoadScene(string sceneName)
     {
         lastScene = SceneManager.GetActiveScene().name;
-        PlayerController.Instance.transform.position = new Vector3(0.00f, 0.77f, -5.47f);
+        PlayerController.Instance.transform.position = new Vector3(0.00f, 0.4f, -5.5f);
         SceneManager.LoadScene(sceneName);
     }
 
