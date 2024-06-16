@@ -26,6 +26,7 @@ public class DialogueManager : MonoBehaviour
     // Add manualmente na cena, em GameController -> DialogueManager
     public List<int> showInputAtLine = new List<int> {};
     public List<int> showChoiceAtLine = new List<int> {};
+    public List<ActionLine> doActionAtLine = new List<ActionLine> {};
 
     // List<int> cubePuzzleAnswers = new List<int> { 7, 2, 5, 4, 0, 1, 6, 3 };
     List<int> cubePuzzleAnswers = new List<int> { 0, 0, 0, 0, 0, 0, 0, 0 }; // For testing
@@ -34,8 +35,11 @@ public class DialogueManager : MonoBehaviour
     Dialogue dialogue;
     int currentLine = 0;
     bool isTyping;
+    bool isActionLoop = false;
+    bool playerWalkTutorialFirstTime = true;
     int selectedChoiceIndex = 0;
     Coroutine typingCoroutine;
+    ActionLine currentActionLine;
 
     public static DialogueManager Instance { get; private set; }
 
@@ -58,9 +62,14 @@ public class DialogueManager : MonoBehaviour
         button.onClick.AddListener(OnButtonClicked);
     }
 
-    public void HandleUpdate()
+    public void HandleUpdate(bool forceUpdate = false)
     {
-        if (Input.GetKeyDown(KeyCode.F) && !isTyping && !choicePanel.activeSelf)
+        if(!forceUpdate && isActionLoop){
+            RunAction(currentActionLine.action);
+            return;
+        }
+        
+        if (forceUpdate || (Input.GetKeyDown(KeyCode.F) && !isTyping && !choicePanel.activeSelf))
         {
             ++currentLine;
             if (currentLine < dialogue.Lines.Count)
@@ -82,6 +91,13 @@ public class DialogueManager : MonoBehaviour
                     selectedChoiceIndex = 0;
                     UpdateChoiceHighlight();
                 }
+                ActionLine actionLine = doActionAtLine.Find(i => i.line == currentLine);
+                NPCController currentNPC = GetCurrentNPC();
+                if (currentNPC != null && currentNPC.isInitialDialog && doActionAtLine.Find(i => i.line == currentLine) != null)
+                {
+                    currentActionLine = actionLine;
+                    RunAction(currentActionLine.action);
+                }
             }
             else
             {
@@ -100,7 +116,7 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public IEnumerator ShowDialogue(Dialogue dialogue, List<int> inputLines = null, List<int> choiceLines = null)
+    public IEnumerator ShowDialogue(Dialogue dialogue, List<int> inputLines = null, List<int> choiceLines = null, List<ActionLine> actionLines = null)
     {
         yield return new WaitForEndOfFrame();
 
@@ -109,6 +125,7 @@ public class DialogueManager : MonoBehaviour
         this.dialogue = dialogue;
         this.showInputAtLine = inputLines;
         this.showChoiceAtLine = choiceLines;
+        this.doActionAtLine = actionLines;
         
         dialogueBox.SetActive(true);
         if (typingCoroutine != null)
@@ -244,5 +261,47 @@ public class DialogueManager : MonoBehaviour
 
         currentCubePuzzleIndex++;
         dialogueBox.SetActive(true);
+    }
+
+    public void RunAction(string actionName){
+        switch(actionName) 
+        {
+        case "PlayerWalkTutorial":
+            isActionLoop = true;
+            PlayerController playerController = FindObjectOfType<PlayerController>();
+            bool playerIsMoving = playerController.handleAutomaticMove(4, playerWalkTutorialFirstTime);
+            if(playerWalkTutorialFirstTime){
+                playerWalkTutorialFirstTime = false;
+            }
+            if(!playerIsMoving){
+                isActionLoop = false;
+                this.HandleUpdate(true);
+            }
+            break;
+        case "ColorOnTutorial":
+            isActionLoop = true;
+            if (Input.GetKeyDown(KeyCode.Q)){
+                isActionLoop = false;
+                this.HandleUpdate(true);
+            }
+            break;
+        case "ColorSwitchTutorial":
+            isActionLoop = true;
+            if (Input.GetKeyDown(KeyCode.E)){
+                isActionLoop = false;
+                this.HandleUpdate(true);
+            }
+            break;
+        case "GetGreenTotemTutorial":
+            InventoryManager inventoryManager = FindObjectOfType<InventoryManager>();
+            inventoryManager.AddItem("GreenTotem");
+            break;
+        case "EndTutorial":
+            ChangeDialogue();
+            break;
+        default:
+            Debug.Log("Ação não reconhecida");
+            break;
+        }
     }
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.007150585, g: 0.007634934, b: 0.008374492, a: 1}
+  m_IndirectSpecularColor: {r: 0.0115542, g: 0.009294415, b: 0.0061879223, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -414,7 +414,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 6804708a5a9008842a292785841bcf3b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.365
+      value: -1.9282287
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6804708a5a9008842a292785841bcf3b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -645,7 +645,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2879881705358832372, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.77
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2879881705358832372, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -705,6 +705,7 @@ GameObject:
   - component: {fileID: 332368971}
   - component: {fileID: 332368973}
   - component: {fileID: 332368972}
+  - component: {fileID: 332368976}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -743,6 +744,7 @@ MonoBehaviour:
   - {fileID: 141720386}
   showInputAtLine: 
   showChoiceAtLine: 0100000002000000030000000400000005000000060000000700000008000000
+  doActionAtLine: []
 --- !u!114 &332368972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -800,6 +802,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &332368976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332368970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5532f1bf06e15174bbf531219d1b2089, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &561770949
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1346,7 +1360,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 1c417d91a00627c46b8fb9becc07fdec, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.3487712
+      value: -1.912
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1c417d91a00627c46b8fb9becc07fdec, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1512,7 +1526,7 @@ MonoBehaviour:
   collisionRadius: 0.2
   interactRadius: 0.2
   portalRadius: 0.1
-  startSpawnPosition: {x: -1.5, y: 0.4, z: 0}
+  startSpawnPosition: {x: -1.5, y: 0.5, z: 0}
 --- !u!212 &1341984370
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1574,8 +1588,8 @@ Transform:
   m_GameObject: {fileID: 1341984366}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.5, y: 0.4, z: 0}
-  m_LocalScale: {x: 3.5, y: 3.5, z: 0}
+  m_LocalPosition: {x: -1.5, y: 0.5, z: 0}
+  m_LocalScale: {x: 4.5, y: 4.5, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 258163188}

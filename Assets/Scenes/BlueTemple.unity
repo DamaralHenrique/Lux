@@ -939,6 +939,7 @@ MonoBehaviour:
   - {fileID: 1758926745}
   showInputAtLine: 
   showChoiceAtLine: 0100000002000000030000000400000005000000060000000700000008000000
+  doActionAtLine: []
 --- !u!114 &390297895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2407,8 +2408,8 @@ Transform:
   m_GameObject: {fileID: 1070744965}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.4, z: -3.3}
-  m_LocalScale: {x: 3.5, y: 3.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0.475, z: -3.3}
+  m_LocalScale: {x: 4.5, y: 4.5, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2077979542}
@@ -2577,6 +2578,7 @@ MonoBehaviour:
   moveSpeed: 0.05
   showInputAtLine: 
   showChoiceAtLine: 0100000002000000030000000400000005000000060000000700000008000000
+  doActionAtLine: []
 --- !u!65 &1133889126
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2686,8 +2688,8 @@ Transform:
   m_GameObject: {fileID: 1133889123}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 1.92, y: 0.55, z: -0.069}
-  m_LocalScale: {x: 3.5, y: 3.5, z: 0}
+  m_LocalPosition: {x: 1.92, y: 0.65, z: -0.069}
+  m_LocalScale: {x: 4.5, y: 4.5, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1258094304}
@@ -3117,7 +3119,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2879881705358832372, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.77
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2879881705358832372, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
       propertyPath: m_LocalPosition.z

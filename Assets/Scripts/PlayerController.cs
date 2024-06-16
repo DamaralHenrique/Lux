@@ -190,7 +190,7 @@ public class PlayerController : MonoBehaviour
         RaycastHit hitDown;
 
         // Raycast upwards to detect climbable objects
-        float characterHeight = 0.4f;
+        float characterHeight = 0.5f;
         if (Physics.Raycast(targetPos - Vector3.up * characterHeight, Vector3.up, out hitUp, 1.0f, floorLayer))
         {
             Debug.Log("Climbable object");
@@ -249,5 +249,23 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+    }
+
+    public bool handleAutomaticMove(int distance, bool makeMovement){
+        if(makeMovement && !isMoving){
+            Debug.Log("Setup moving");
+            animator.SetFloat("moveY", distance);
+            Vector3 targetPos = transform.position;
+            targetPos.x += distance;
+            if (moveCoroutine != null)
+            {
+
+                StopCoroutine(moveCoroutine);
+            }
+            moveCoroutine = StartCoroutine(Move(targetPos));
+        }
+        
+        animator.SetBool("isMoving", isMoving);
+        return isMoving;
     }
 }
