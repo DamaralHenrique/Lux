@@ -210,10 +210,10 @@ public class PlayerController : MonoBehaviour
     {
         var interactPos = transform.position + new Vector3(facingDirection.x, 0, facingDirection.y);
 
-        var NPCCollider = Physics.OverlapSphere(interactPos, interactRadius, interactableLayer);
-        if (NPCCollider.Length != 0)
+        var interactableCollider = Physics.OverlapSphere(interactPos, interactRadius, interactableLayer);
+        if (interactableCollider.Length != 0)
         {
-            NPCCollider[0].GetComponent<Interactable>()?.Interact();
+            interactableCollider[0].GetComponent<Interactable>()?.Interact();
         }
 
         var TotemCollider = Physics.OverlapSphere(interactPos, interactRadius, totemLayer);
@@ -222,6 +222,11 @@ public class PlayerController : MonoBehaviour
             string totemName = TotemCollider[0].gameObject.name;
             inventoryManager.AddItem(totemName);
             TotemCollider[0].gameObject.SetActive(false);
+            SceneObjectsManager.Instance.SetObjectState(
+                SceneManager.GetActiveScene().name, 
+                totemName, 
+                false
+            ); // Salva o estado do totem
 
             Scene scene = SceneManager.GetActiveScene();
             if (scene.name == "RedTemple")

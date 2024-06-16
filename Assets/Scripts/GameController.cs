@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum GameState { Default, Dialogue}
 
@@ -63,6 +64,11 @@ public class GameController : MonoBehaviour
                 {
                     Debug.Log(obj.name);
                     obj.SetActive(false);
+                    SceneObjectsManager.Instance.SetObjectState(
+                        SceneManager.GetActiveScene().name, 
+                        obj.name, 
+                        false
+                    ); // Salva o estado de "portas abertas" pós conclusão do puzzle
                 }
             }
         };
