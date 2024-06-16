@@ -189,24 +189,35 @@ public class PlayerController : MonoBehaviour
         RaycastHit hitUp;
         RaycastHit hitDown;
 
-        // Raycast upwards to detect climbable objects
-        float characterHeight = 0.5f;
-        if (Physics.Raycast(targetPos - Vector3.up * characterHeight, Vector3.up, out hitUp, 1.0f, floorLayer))
-        {
-            Debug.Log("Climbable object");
-            Debug.Log("Hit point: " + hitUp.point.y);
-            float ascPosY = hitUp.point.y + characterHeight + 0.35f;
-            Debug.Log("New pos-y: " + ascPosY);
+        // Constants for character height and floor collision adjustment
+        float characterHeight = 0.471f;
+        float floorBoxCollisionZ = 0.02f;
+        float climbHeightAdjustment = 0.35f;
+        float raycastDistance = 1.0f;
 
+        // Raycast upwards to detect climbable objects
+        if (Physics.Raycast(targetPos - Vector3.up * characterHeight, Vector3.up, out hitUp, raycastDistance, floorLayer))
+        {
+            // Debug.Log("Climbable object");
+            // Debug.Log("Hit point: " + hitUp.point.y);
+            float ascPosY = hitUp.point.y + characterHeight + climbHeightAdjustment;
+            // Debug.Log("New pos-y: " + ascPosY);
             return ascPosY;
         }
         
         // Raycast downwards to detect descendable areas
-        Physics.Raycast(targetPos, Vector3.down, out hitDown, 100, floorLayer);
-        float floorBoxColisionZ = 0.02f;
-        float posY = hitUp.point.y + characterHeight + floorBoxColisionZ;
+        if (Physics.Raycast(targetPos, Vector3.down, out hitDown, 100, floorLayer))
+        {
+            // Debug.Log("Descendable area");
+            // Debug.Log("Hit point: " + hitDown.point.y);
+            float posY = hitDown.point.y + characterHeight + floorBoxCollisionZ;
+            // Debug.Log("New pos-y: " + posY);
+            return posY;
+        }
 
-        return posY;
+        // Default to current y-position if nothing detected
+        // Debug.Log("No climbable or descendable objects detected");
+        return targetPos.y;
     }
 
     void Interact()
