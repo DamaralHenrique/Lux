@@ -2631,8 +2631,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialDialogue:
     lines:
-    - "[Di\xE1logo provis\xF3rio] Diga as cores de cada cubo, da esquerda para a
-      direita"
+    - "Ol\xE1! Descobriu a ordem de cores dos cubos?"
     - '[Insira a cor do primeiro cubo]'
     - '[Insira a cor do segundo cubo]'
     - '[Insira a cor do terceiro cubo]'
@@ -2641,9 +2640,11 @@ MonoBehaviour:
     - '[Insira a cor do sexto cubo]'
     - "[Insira a cor do s\xE9timo cubo]"
     - '[Insira a cor do oitavo cubo]'
+    - "Conseguimos! Bom, como foi voc\xEA que descobriu a ordem, pode pegar o totem"
   puzzleCompleteDialogue:
     lines:
-    - "[Provis\xF3rio] Di\xE1logo ap\xF3s completar o puzzle"
+    - "Tenho que anotar essas descobertas! Depois voc\xEA pode me falar melhor sobre
+      essas outras cores que a inscri\xE7\xE3o falava? Vai ajudar na minha pesquisa"
   moveSpeed: 0.05
   showInputAtLine: 
   showChoiceAtLine: 0100000002000000030000000400000005000000060000000700000008000000
@@ -3466,7 +3467,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObjectText:
     lines:
-    - "[Tempor\xE1rio] Texto da inscri\xE7\xE3o: lorem ipsum lorem ipsum lorem ipsum"
+    - "*A pedra diz: \u2018Aquele que todas cores pode ver, o in\xEDcio no leste
+      dever\xE1 revelar o tesouro\u2019*"
+    - "*Hummm\u2026 talvez aquele pesquisador azul pode me ajudar*"
 --- !u!1001 &1579240135
 PrefabInstance:
   m_ObjectHideFlags: 0

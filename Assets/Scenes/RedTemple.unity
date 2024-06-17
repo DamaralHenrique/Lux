@@ -9802,8 +9802,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObjectText:
     lines:
-    - "[Texto provis\xF3rio] Parab\xE9ns, voc\xEA obteu o totem vermelho. "
-    - "Para sair do labirinto, dirija-se \xE0 porta de sa\xEDda \xE0 sua direita"
+    - "Para sair do templo, dirija-se \xE0 porta de sa\xEDda \xE0 sua direita"
 --- !u!1 &1233533391 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -473063305874550536, guid: 0e1b2526ebfd2d6458885d3b24735b7a, type: 3}
@@ -12523,7 +12522,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialDialogue:
     lines:
-    - "[Di\xE1logo Provis\xF3rio] Inserir di\xE1logo NPC red"
+    - O totem vermelho fica guardado do outro lado desta sala
+    - "A solu\xE7\xE3o deve ter algo a ver com as inscri\xE7\xF5es na parede: \u2018Deixe
+      as cores iluminam seu caminho\u2019"
+    - "O problema \xE9 que n\xE3o encontrei nenhum caminho at\xE9 l\xE1\u2026 Somente
+      esse caminho sem sa\xEDda a\xED na frente"
   puzzleCompleteDialogue:
     lines: []
   moveSpeed: 0.05
@@ -12642,7 +12645,7 @@ Transform:
   m_GameObject: {fileID: 1658165669}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.76, y: 0.67, z: -9.08}
+  m_LocalPosition: {x: 0.602, y: 0.67, z: -9.5}
   m_LocalScale: {x: 4.5, y: 4.5, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
