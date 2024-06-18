@@ -74,6 +74,19 @@ public class SceneObjectsManager : MonoBehaviour
         }
     }
 
+    public bool IsObjectActive(string sceneName, string objectName)
+    {
+        foreach (var state in objectStates)
+        {
+            if (state.sceneName == sceneName && state.objectName == objectName)
+            {
+                Debug.Log($"Scene: {state.sceneName}, Object: {state.objectName}, Active: {state.isActive}");
+                return state.isActive;
+            }
+        }
+        return false;
+    }
+
     public void UpdateStates()
     {
         // Debug.Log("Updating object states...");

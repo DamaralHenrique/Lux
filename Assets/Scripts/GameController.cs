@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum GameState { Default, Dialogue}
+public enum GameState { Default, Dialogue, GameComplete, BeforeGameComplete }
 
 public class GameController : MonoBehaviour
 {
     [SerializeField] PlayerController playerController;
     [SerializeField] NPCController npcController;
+    [SerializeField] GameObject gameClearPanel;
 
     GameState state;
     private NPCController currentNPC;
+    private InventoryManager inventoryManager;
+
+    private bool isGameComplete = false;
 
     public static GameController Instance { get; private set; }
 
@@ -27,6 +31,8 @@ public class GameController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        inventoryManager = FindObjectOfType<InventoryManager>();
     }
 
     void Start()
@@ -35,13 +41,19 @@ public class GameController : MonoBehaviour
 
         DialogueManager.Instance.OnShowDialogue += () => 
         {
-            state = GameState.Dialogue;
+            if (state == GameState.Default)
+            {
+                state = GameState.Dialogue;
+            } 
         };
         DialogueManager.Instance.OnCloseDialogue += () => 
         {
-            if (state == GameState.Dialogue)
+            if (state == GameState.Dialogue && !isGameComplete)
             {
                 state = GameState.Default;
+            } else if (state == GameState.Dialogue && isGameComplete)
+            {
+                state = GameState.GameComplete;
             }
         };
         DialogueManager.Instance.OnPasswordCorrect += () =>
@@ -105,11 +117,27 @@ public class GameController : MonoBehaviour
                 }
             }
         };
+        GameComplete.Instance.OnSkipGameCompleteMessage += () =>
+        {
+            state = GameState.Default;
+            // isGameComplete = false;
+            gameClearPanel.SetActive(false);
+        };
     }
 
     public void SetCurrentNPC(NPCController npc)
     {
         currentNPC = npc;
+    }
+
+    public void CheckGameClear()
+    {
+        if (inventoryManager.inventory.Contains("BlueTotem") && 
+            inventoryManager.inventory.Contains("RedTotem") && 
+            inventoryManager.inventory.Contains("GreenTotem"))
+        {
+            isGameComplete = true;
+        }
     }
 
     public NPCController GetCurrentNPC()
@@ -138,6 +166,11 @@ public class GameController : MonoBehaviour
         else if (state == GameState.Dialogue)
         {
             DialogueManager.Instance.HandleUpdate();
+        }
+        else if (state == GameState.GameComplete)
+        {
+            gameClearPanel.SetActive(true);
+            GameComplete.Instance.HandleUpdate();
         }
     }
 }
