@@ -929,6 +929,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 140be031a25b0464d818a0689d17a29f, type: 3}
+--- !u!1 &99831330 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4455987260807863139, guid: 140be031a25b0464d818a0689d17a29f, type: 3}
+  m_PrefabInstance: {fileID: 99831329}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &123150126
 GameObject:
   m_ObjectHideFlags: 0
@@ -14407,6 +14412,7 @@ GameObject:
   - component: {fileID: 1848551711}
   - component: {fileID: 1848551712}
   - component: {fileID: 1848551713}
+  - component: {fileID: 1848551714}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -14460,6 +14466,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 2130852344}
   npcController: {fileID: 0}
+  gameClearPanel: {fileID: 99831330}
 --- !u!4 &1848551710
 Transform:
   m_ObjectHideFlags: 0
@@ -14513,6 +14520,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5532f1bf06e15174bbf531219d1b2089, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1848551714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848551707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 142bbd4c8672c474fa0f803ba4786ec9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1878055424

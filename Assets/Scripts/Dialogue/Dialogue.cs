@@ -11,4 +11,14 @@ public class Dialogue
     public List<string> Lines {
         get {return lines;}
     }
+
+    public void AddLine(string line)
+    {
+        lines.Add(line);
+    }
+
+    public void ClearLines()
+    {
+        lines.Clear();
+    }
 }
