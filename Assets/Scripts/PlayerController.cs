@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 0.01f;
+    public float speed = 0.05f;
     public LayerMask solidObjectLayer;
     public LayerMask interactableLayer;
     public LayerMask floorLayer;
@@ -195,7 +195,7 @@ public class PlayerController : MonoBehaviour
         RaycastHit hitDown;
 
         // Constants for character height and floor collision adjustment
-        float characterHeight = 0.471f;
+        float characterHeight = 0.5f;   
         float floorBoxCollisionZ = 0.02f;
         float climbHeightAdjustment = 0.35f;
         float raycastDistance = 1.0f;
