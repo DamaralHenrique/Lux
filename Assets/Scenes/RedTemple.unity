@@ -3063,6 +3063,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5801438021351333499, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
+      propertyPath: m_Size.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8788306414535559478, guid: b39526e9c28ac40458052e5b6c3cfaf9, type: 3}
       propertyPath: m_Name
       value: PortalMainSquareBackDoor

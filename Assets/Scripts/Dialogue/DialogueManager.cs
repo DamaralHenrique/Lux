@@ -28,8 +28,8 @@ public class DialogueManager : MonoBehaviour
     public List<int> showChoiceAtLine = new List<int> {};
     public List<ActionLine> doActionAtLine = new List<ActionLine> {};
 
-    // List<int> cubePuzzleAnswers = new List<int> { 7, 2, 5, 4, 0, 1, 6, 3 };
-    List<int> cubePuzzleAnswers = new List<int> { 0, 0, 0, 0, 0, 0, 0, 0 }; // For testing
+    List<int> cubePuzzleAnswers = new List<int> { 7, 2, 5, 4, 0, 1, 6, 3 };
+    // List<int> cubePuzzleAnswers = new List<int> { 0, 0, 0, 0, 0, 0, 0, 0 }; // For testing
 
     int currentCubePuzzleIndex = 0;
     Dialogue dialogue;
@@ -158,7 +158,7 @@ public class DialogueManager : MonoBehaviour
             StopCoroutine(typingCoroutine);
         }
 
-        if (userInput == "123")
+        if (userInput == "123456")
         {
             typingCoroutine = StartCoroutine(TypeDialogue("Senha correta!"));
             OnPasswordCorrect?.Invoke();
